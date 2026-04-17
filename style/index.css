@@ -1,0 +1,68 @@
+
+
+.divPrincipal {
+    height:1000px;
+    width: 94%;
+    margin: auto;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divPrincipal h2{
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.divPrincipal h2 span{
+    font-size: 30px;
+    color: white;
+    margin-left: 7px;
+}
+
+.divPrincipal h2 b{
+    font-size: 30px;
+    color: red;
+}
+
+.divPrincipal h3 {
+    width: 1200px;
+    margin-top: 11px;
+}
+
+.divPrincipal img {
+    height: 500px;
+}
+
+.historia{
+    display: flex;
+    flex-direction: row;
+}
+
+.textoHistoria {
+    display: flex;
+    width: 53%;
+    margin-left: 30px;
+    margin-top: 40px;
+    justify-content:start ;
+    flex-direction: column;
+}
+
+.imagemHistoria {
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+    justify-content: center;
+    width: 47%;
+}
+
+.imagemHistoria img{
+    height: 520px;
+    border: 3px solid white;
+}
+
+
+
