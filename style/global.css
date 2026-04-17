@@ -49,4 +49,13 @@ height: 250px;
 width: 100%;
 border-top: 2px solid white;
 background-color: black;
+display: flex;
+color: white;
+align-items: center;
+}
+
+.contatos {
+    justify-content: end;
+    align-items: center;
+    width: 100%;
 }
