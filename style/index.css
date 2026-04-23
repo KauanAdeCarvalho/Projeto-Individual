@@ -1,13 +1,12 @@
-
-
 .divPrincipal {
-    height:1000px;
+    height:2000px;
     width: 94%;
     margin: auto;
     background-color: gray;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid black;
 }
 
 .divPrincipal h2{
@@ -49,6 +48,11 @@
     margin-top: 40px;
     justify-content:start ;
     flex-direction: column;
+    font-size: 18px;
+}
+
+.textoHistoria b {
+    font-size: 20px;
 }
 
 .imagemHistoria {
@@ -57,6 +61,7 @@
     margin-top: 70px;
     justify-content: center;
     width: 47%;
+    flex-direction: column;
 }
 
 .imagemHistoria img{
