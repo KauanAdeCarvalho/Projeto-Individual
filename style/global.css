@@ -58,17 +58,35 @@ footer {
     color: white;
     align-items: center;
     flex-direction: row;
-    justify-content: flex-end;
-}
-
-footer h2 {
-    display: flex;
     justify-content: center;
+    gap: 390px;
 }
 
 .contatos {
     display: flex;
-    justify-content: end;
     flex-direction: column;
+    justify-content: start;
+}
+
+.criadores {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.made {
+    display: flex;
     align-items: center;
+    margin-top: 140px;
+    flex-direction: column;
+}
+
+.made span {
+    color: red;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.made b {
+    font-size: 20px;
 }
