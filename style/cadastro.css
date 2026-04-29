@@ -48,9 +48,16 @@
 .caixa input {
     text-align: center;
     padding: 7px;
+    font-size: 17px;
     border: 1.5px solid aqua;
     border-radius: 10px;
     width: 250px;
+}
+
+.caixa span {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .caixa button {

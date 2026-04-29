@@ -11,8 +11,9 @@
 
 <body>
     <header>
-      <div>
-        <a href="file:///home/kauan/Documentos/SPTech/Projeto%20Individual/Projeto-Individual/index.html"><span>Animes<b>X</b></span></a>
+        <div>
+            <a
+                href="file:///home/kauan/Documentos/SPTech/Projeto%20Individual/Projeto-Individual/index.html"><span>Animes<b>X</b></span></a>
         </div>
         <nav>
             <a href="file:///home/kauan/Documentos/SPTech/Projeto%20Individual/Projeto-Individual/index.html">Home</a>
@@ -25,34 +26,38 @@
     </header>
     <div class="container">
         <div class="containerCaixa">
-        <div class="caixa">
-            <h2>Faça seu Cadastro</h2> <br><br>
-            Login <br>
-            <input type="text" placeholder="Usuario123"> <br><br>
-            Email <br>
-            <input type="text" placeholder="seuemail@gmail.com"> <br><br>
-            Senha <br>
-            <input type="password" placeholder="senha123"> <br><br>
-            Confirmar Senha <br>
-            <input type="password" placeholder="senha123"> <br><br>
-            <button>Cadastrar</button>
-        </div>
+            <div class="caixa">
+                <h2>Faça seu Cadastro</h2> <br><br>
+                Login <br>
+                <input id="iptUser" oninput="conferirUser()" type="text" placeholder="Usuario123">
+                <span id="spanUser"></span> <br>
+                Email <br>
+                <input id="iptEmail" oninput="conferirEmail()" type="text" placeholder="seuemail@gmail.com">
+                <span id="spanEmail"></span> <br>
+                Senha <br>
+                <input id="iptSenha" oninput="conferirSenha()" type="password" placeholder="senha123">
+                <span id="spanSenha"></span> <br>
+                Confirmar Senha <br>
+                <input id="confirmarSenha" oninput="conferirConfirmacao()" type="password" placeholder="senha123">
+                <span id="spanConfirmacao"></span> <br><br>
+                <button>Cadastrar</button>
+            </div>
         </div>
         <div class="containerImagem">
             <img class="imagemNice" src="./assets/imgs/nice.jpg" alt="">
         </div>
     </div>
     <footer>
-                <div class="criadores">
+        <div class="criadores">
             <h2>Criadores:</h2> <br>
             <b>Front-End:</b> Kauan Carvalho <br><br>
             <b>Back-End:</b> Kauan Carvalho <br><br>
             <b>Banco de Dados:</b> Kauan Carvalho
         </div>
-        <div class="made"> 
+        <div class="made">
             <h2>Projeto Individual feito com muito amor</h2> <br>
             <div class="madeAnimes">
-            <b>Animes</b><span>X</span>
+                <b>Animes</b><span>X</span>
             </div>
         </div>
         <div class="contatos">
@@ -66,3 +71,98 @@
 </body>
 
 </html>
+<script>
+
+    let senhaReferencia = ''
+
+    function conferirUser() {
+
+        let usuario = iptUser.value;
+
+        if (usuario.trim() == "") {
+            spanUser.innerHTML = "";
+            return;
+        }
+
+        if (usuario.length < 4) {
+            spanUser.innerHTML = 'O usuário precisa ter no mínimo 4 caracteres';
+        }
+        else {
+            spanUser.innerHTML = '';
+        }
+
+    }
+
+    function conferirEmail() {
+
+        let email = iptEmail.value;
+        let mensagem = '';
+
+        if (email.trim() == "") {
+            spanEmail.innerHTML = "";
+            return;
+        }
+
+        if (!email.includes("@")) {
+            mensagem += 'O email precisa conter "@" <br>';
+        }
+
+        if (!email.includes('.com')) {
+            mensagem += 'O email precisa contar ".com" ';
+        }
+
+        spanEmail.innerHTML = mensagem;
+
+    }
+
+    function conferirSenha() {
+
+        let senha = iptSenha.value;
+
+        let mensagem = '';
+
+
+        if (senha.trim() == "") {
+            spanSenha.innerHTML = "";
+            return;
+        }
+
+        if (senha.length < 7) {
+            mensagem += 'A senha precisa ter no mínimo 7 caracteres <br>';
+        }
+
+        if (senha.toUpperCase() == senha) {
+            mensagem += 'A senha precisa ter no mínimo 1 caractere minúsculo <br>';
+        }
+
+        if (senha.toLowerCase() == senha) {
+            mensagem += 'A senha precisa ter no mínimo 1 caractere maiúsculo <br>';
+        }
+
+        if (!/[0-9]/.test(senha)) {
+            mensagem += 'A senha precisa ter pelo menos 1 número <br>';
+        }
+
+        if (!/[!@#$%&*_]/.test(senha)) {
+            mensagem += 'A senha precisa ter caractere especial <br>';
+        }
+        spanSenha.innerHTML = mensagem;
+
+        senhaReferencia = senha;
+    }
+
+    function conferirConfirmacao() {
+
+        let confirmacaoSenha = confirmarSenha.value;
+
+        if (confirmacaoSenha != senhaReferencia) {
+            spanConfirmacao.innerHTML = 'As senhas precisam ser iguais'
+        }
+        else {
+            spanConfirmacao.innerHTML = ''
+
+        }
+
+    }
+
+</script>
