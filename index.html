@@ -176,24 +176,32 @@
 
             <div class="carrosselJanela">
                 <div class="carrossel" id="carrossel">
-                    <img src="./assets/imgs/SoloLeveling.webp">
-                    <img src="./assets/imgs/OnePiece.webp">
-                    <img src="./assets/imgs/JujutsuKaisen.jpg">
-                    <img src="./assets/imgs/DemonSlayer.jpg">
-                    <img src="./assets/imgs/AttackOnTitan.jpg">
-                    <img src="./assets/imgs/Frieren.webp">
-                    <img src="./assets/imgs/ChainsawMan.jpg">
-                    <img src="./assets/imgs/Naruto.avif">
-                    <img src="./assets/imgs/MyHero.jpg">
-                    <img src="./assets/imgs/DandaDan.jpg">
+                    <img onclick="mostrarSoloLeveling()" src="./assets/imgs/SoloLeveling.webp">
+                    <img onclick="mostrarOnePices()" src="./assets/imgs/OnePiece.webp">
+                    <img onclick="mostrarJujustsu()" src="./assets/imgs/JujutsuKaisen.jpg">
+                    <img onclick="mostrarDemonSlayer()" src="./assets/imgs/DemonSlayer.jpg">
+                    <img onclick="mostrarAttack()" src="./assets/imgs/AttackOnTitan.jpg">
+                    <img onclick="mostrarFrieren()" src="./assets/imgs/Frieren.webp">
+                    <img onclick="mostrarChainsaw()" src="./assets/imgs/ChainsawMan.jpg">
+                    <img onclick="mostrarNaruto()" src="./assets/imgs/Naruto.avif">
+                    <img onclick="mostrarMyHero()" src="./assets/imgs/MyHero.jpg">
+                    <img onclick="mostrarDan()" src="./assets/imgs/DandaDan.jpg">
                 </div>
             </div>
 
             <button class="setaDireita" onclick="proximo()">❯</button>
 
+        </div> <br><br><br><br><br>
+
+        <div class="infosObra" id="infosObra">
+            <div class="autor">
+                <img src="" alt="foto do autor">
+            </div>
+            <div class="textoObra">
+
+            </div>
+
         </div>
-
-
 
 
 
@@ -268,5 +276,11 @@ setInterval(() => {
     carrossel.style.transform = `translateX(-${posicao}px)`
 
 }, 3000)
+
+function mostrarSoloLeveling(){
+
+    
+
+}
 
 </script>
