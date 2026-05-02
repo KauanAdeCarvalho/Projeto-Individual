@@ -12,24 +12,28 @@
 <body>
     <header>
         <div>
-        <a href="./index.html"><span>Animes<b>X</b></span></a>
+            <a href="./index.html"><span>Animes<b>X</b></span></a>
         </div>
         <nav>
             <a class="ativo" href="./index.html">Home</a>
             |
-            <a
-                href="./cadastro.html">Cadastro</a>
+            <a href="./cadastro.html">Cadastro</a>
             |
             <a href="./login.html">Login</a>
         </nav>
     </header>
 
     <div class="divPrincipal">
-        <h2>Bem Vindo(a) ao <span class="animesX">Animes</span><b>X</b>!</h2>
-        <h3>Aqui apresenteremos um pouco da história dos animes
-            no Brasil e, os 10 animes mais populares atualmente (no Brasil)
-            com base em pesquisas recentes, aproveitem!
-        </h3>
+        <div class="containerImagem">
+            <img class="imagemNice" src="./assets/imgs/niceVertical.webp" alt="">
+        </div>
+        <div class="bemVindo">
+            <h2>Bem Vindo(a) ao <span class="animesX">Animes</span><b>X</b>!</h2>
+            <h3>Aqui apresenteremos um pouco da história dos animes
+                no Brasil e, os 10 animes mais populares atualmente (no Brasil)
+                com base em pesquisas recentes, aproveitem!
+            </h3>
+        </div>
         <div class="historia">
             <div class="textoHistoria">
                 <h2>Como surgiram?</h2> <br>
@@ -141,12 +145,51 @@
                     disponíveis no
                     Japão. “Um exemplo disso é o que aconteceu com o episódio 1000 de One Piece, a Crunchyroll lançou
                     legendado em português, na mesma hora em que foi lançado no próprio Japão”, disse o
-                    estudante.</span>
+                    estudante.
+                </span> <br><br>
+                <span>
+                    No dia 9 de dezembro de 2020, a Funimation anunciou a compra da Crunchyroll, a absorveu e deixou a
+                    Crunchyroll como plataforma principal, transferindo todo catálogo da Funimation para a lá.
+                </span>
             </div>
         </div> <br><br><br>
+
+
         <div class="imagemStreamings">
-            <img src="./assets/imgs/Crunchy.jpg" alt=""> <br>
-            Imagem dos streamings Crunchyroll e Funimation
+
+            <img src="./assets/imgs/CrunchEFun.webp" alt=""> <br>
+            Imagem das plataformas de streaming Crunchyroll e Funimation
+        </div> <br><br><br><br>
+
+
+        <div class="textoMelhores">
+            <span>Agora que já entendemos um pouco da história dos animes, vamos ao ponto principal de hoje!</span>
+            <span>Qual são os 10 animes mais populares atualmente no Brasil? </span> <br>
+            <span>Confira agora algum dos títulos mais
+                assistidos nacionalmente.</span>
+        </div> <br><br><br><br><br>
+
+
+        <div class="carrosselContainer">
+
+            <button class="setaEsquerda" onclick="voltar()">❮</button>
+
+            <div class="carrosselJanela">
+                <div class="carrossel" id="carrossel">
+                    <img src="./assets/imgs/SoloLeveling.webp">
+                    <img src="./assets/imgs/OnePiece.webp">
+                    <img src="./assets/imgs/JujutsuKaisen.jpg">
+                    <img src="./assets/imgs/DemonSlayer.jpg">
+                    <img src="./assets/imgs/AttackOnTitan.jpg">
+                    <img src="./assets/imgs/Frieren.webp">
+                    <img src="./assets/imgs/ChainsawMan.jpg">
+                    <img src="./assets/imgs/Naruto.avif">
+                    <img src="./assets/imgs/MyHero.jpg">
+                    <img src="./assets/imgs/DandaDan.jpg">
+                </div>
+            </div>
+
+            <button class="setaDireita" onclick="proximo()">❯</button>
 
         </div>
 
@@ -179,3 +222,51 @@
 
 
 </html>
+
+<script>
+
+let carrossel = document.getElementById("carrossel")
+let janela = document.querySelector(".carrosselJanela")
+
+let posicao = 0
+let larguraItem = 565  
+
+function proximo(){
+
+    let limite = carrossel.scrollWidth - janela.clientWidth
+
+    posicao += larguraItem
+
+    if(posicao > limite){
+        posicao = limite
+    }
+
+    carrossel.style.transform = `translateX(-${posicao}px)`
+}
+
+function voltar(){
+
+    posicao -= larguraItem
+
+    if(posicao < 0){
+        posicao = 0
+    }
+
+    carrossel.style.transform = `translateX(-${posicao}px)`
+}
+
+setInterval(() => {
+
+    let limite = carrossel.scrollWidth - janela.clientWidth
+
+    if(posicao >= limite){
+        posicao = 0
+    } else {
+        posicao += larguraItem
+    }
+
+    carrossel.style.transform = `translateX(-${posicao}px)`
+
+}, 3000)
+
+</script>

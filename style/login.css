@@ -14,7 +14,7 @@
     flex-direction: column;
     width: 45%;
     height: 100%;
-    background: linear-gradient(to bottom, rgb(225, 225, 242), #1c1c1c);
+    background: linear-gradient(to bottom,  rgb(255, 0, 0), #1c1c1c);
     align-items: center;
     justify-content: center;
 }
@@ -36,7 +36,7 @@
 
 .caixa {
     display: flex;
-    height: 550px;
+    height: 550px; /* 550px, width: 60%*/
     width: 60%;
     justify-content: center;
     align-items: center;
