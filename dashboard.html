@@ -5,44 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/dashboard.css">
-    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/funcionais.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
 </head>
 
 <body>
-    <header>
-        <div>
-        <a href="./index.html"><span>Animes<b>X</b></span></a>
-        </div>
-        <nav>
-            <a href="">Home</a>
-            |
-            <a href="">Cadastro</a>
-            |
-            <a href="">Login</a>
-        </nav>
-    </header>
-    <footer>
-            <div class="criadores">
-            <h2>Criadores:</h2> <br>
-            <b>Front-End:</b> Kauan Carvalho <br><br>
-            <b>Back-End:</b> Kauan Carvalho <br><br>
-            <b>Banco de Dados:</b> Kauan Carvalho
-        </div>
-        <div class="made"> 
-            <h2>Projeto Individual feito com muito amor</h2> <br>
-            <div class="madeAnimes">
-            <b>Animes</b><span>X</span>
+    <div class="container">
+        <div class="header">
+            <h1>ÁREA FUNCIONAL</h1> <br><br><br>
+            <div class="areas">
+                <a href="./seuperfil.html">SEU PERFIL</a>
+                <a class="ativo" href="./dashboard.html">DASHBOARD</a>
+                <a href="./quiz.html">QUIZ</a>
+                <a href="./comentarios.html">COMENTÁRIOS</a>
             </div>
         </div>
-        <div class="contatos">
-            <h2> Número de contato:</h2> <br>
-            <h3>(11) 91111-2222</h3> <br>
-            <h2>Contato Email</h2> <br>
-            <h3>kauan.carvalho@sptech.school</h3>
+        <div class="graficos">
+            <div class="g1">
+                <canvas id="graficoFavoritos">
+
+                </canvas>
+            </div>
         </div>
 
-    </footer>
+    </div>
+
 </body>
 
 </html>
+<script>
+   
+    const ctx = document.getElementById('graficoFavoritos').getContext('2d');
+
+    const grafico = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Naruto', 'One Piece', 'Attack on Titan', 'Demon Slayer', 'Jujutsu Kaisen'],
+            datasets: [{
+                label: '',
+                data: [12, 19, 8, 15, 10], 
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Animes Favoritos'
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.header {
+    display: flex;
+    height: 100%;
+    width: 20%;
+    background-color: black;
+    border-right: 2px solid white;
+    color: white;
+    flex-direction: column;
+}
+
+.header h1 {
+    display: flex;
+    margin: 30px auto 0 auto;
+}
+
+.areas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.areas a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    border: 2px solid white;
+    padding: 15px 10px;
+}
+
+.areas a:hover {
+    transform: scale(1.1);
+    transition: trasnform 0.6s;
+}
+
+.ativo {
+    background-color: rgb(215, 97, 28);
+}
+
+.container {
+    height: 2000px;
+    background-color: #111827;
+    display: flex;
+    flex-direction: row;
+}

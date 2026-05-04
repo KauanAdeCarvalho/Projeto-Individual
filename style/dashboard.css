@@ -1,0 +1,22 @@
+.container {
+    height: 2000px;
+    background-color: #111827;
+    display: flex;
+    flex-direction: row;
+}
+
+.g1 {
+    width: 1000px;
+}
+
+.graficos {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    justify-content: center;
+}
+
+#graficoFavoritos {
+    width: 100%;
+    height: 500px;
+}
