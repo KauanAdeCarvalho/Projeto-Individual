@@ -36,7 +36,7 @@
 
 .caixa {
     display: flex;
-    height: 550px; /* 550px, width: 60%*/
+    height: 550px; 
     width: 60%;
     justify-content: center;
     align-items: center;

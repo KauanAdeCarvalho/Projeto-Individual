@@ -1,0 +1,49 @@
+.container {
+    height: 2000px;
+    background-color: #111827;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerComentario {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 80%;
+}
+
+.seuComentario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    gap: 20px;
+}
+
+.seuComentario textarea {
+    width: 90%;
+    height: 220px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 10px;
+    border-radius: 12px;
+    line-height: 1.4;
+}
+
+.containerComentariosComunidade{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comentariosComunidade {
+    display: flex;
+    width: 80%;
+    height: 800px;
+    background-color: black;
+}   
+
