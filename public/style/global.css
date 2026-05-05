@@ -5,7 +5,7 @@
 }
 
 .ativo {
-    color: aqua;
+    color: red;
     font-weight: bolder;
 }
 
@@ -17,6 +17,7 @@ header {
     width: 100%;
     display: flex;
     border-bottom: 2px solid white;
+    z-index: 999;
 }
 
 header div {

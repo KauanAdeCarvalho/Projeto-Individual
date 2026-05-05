@@ -25,7 +25,6 @@
 
     <div class="divPrincipal">
         <div class="containerImagem">
-            <img class="imagemNice" src="./assets/imgs/niceVertical.webp" alt="">
         </div>
         <div class="bemVindo">
             <h2>Bem Vindo(a) ao <span class="animesX">Animes</span><b>X</b>!</h2>
@@ -237,11 +236,11 @@ let carrossel = document.getElementById("carrossel")
 let janela = document.querySelector(".carrosselJanela")
 
 let posicao = 0
-let larguraItem = 565  
+let larguraItem = 365
 
 function proximo(){
 
-    let limite = carrossel.scrollWidth - janela.clientWidth
+    let limite = carrossel.scrollWidth - janela.clientWidth 
 
     posicao += larguraItem
 
@@ -265,7 +264,7 @@ function voltar(){
 
 setInterval(() => {
 
-    let limite = carrossel.scrollWidth - janela.clientWidth
+    let limite = carrossel.scrollWidth - janela.clientWidth - 365
 
     if(posicao >= limite){
         posicao = 0
