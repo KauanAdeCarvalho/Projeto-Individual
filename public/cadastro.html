@@ -37,8 +37,9 @@
                 <span id="spanSenha"></span> <br>
                 Confirmar Senha <br>
                 <input id="confirmarSenha" oninput="conferirConfirmacao()" type="password" placeholder="senha123">
-                <span id="spanConfirmacao"></span> <br><br>
-                <button>Cadastrar</button>
+                <span id="spanConfirmacao"></span> <br>
+                <span>Já possui conta? <a href=""> Faça login</a></span> <br>
+                <button onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
         <div class="containerImagem">
@@ -144,6 +145,7 @@
         if (!/[!@#$%&*_]/.test(senha)) {
             mensagem += 'A senha precisa ter caractere especial <br>';
         }
+
         spanSenha.innerHTML = mensagem;
 
         senhaReferencia = senha;
@@ -153,14 +155,90 @@
 
         let confirmacaoSenha = confirmarSenha.value;
 
+        if (confirmacaoSenha.trim() == "") {
+            spanConfirmacao.innerHTML = "";
+            return;
+        }
+
+
         if (confirmacaoSenha != senhaReferencia) {
             spanConfirmacao.innerHTML = 'As senhas precisam ser iguais'
+        } else {
+            spanConfirmacao.innerHTML = '';
         }
-        else {
-            spanConfirmacao.innerHTML = ''
-
-        }
-
     }
 
+    function cadastrar() {
+
+        let loginVar = iptUser.value;
+        let emailVar = iptEmail.value;
+        let senhaVar = iptSenha.value;
+        let confirmacaoSenhaVar = confirmarSenha.value;
+
+        
+        if(senhaVar == confirmacaoSenhaVar && loginVar.length > 3 && senhaVar.toUpperCase() != senhaVar && senhaVar.toLowerCase() != senhaVar
+    && /[0-9]/.test(senhaVar) && /[!@#$%&*_]/.test(senhaVar) && emailVar.includes("@") && emailVar.includes(".com") && senhaVar.length > 6) {
+    
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                loginServer: loginVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                confirmacaoSenhaServer: confirmacaoSenhaVar,
+            }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            
+            if (resposta.ok) {
+                
+            //    cardErro.style.display = "block";
+                
+            //    mensagem_erro.innerHTML =
+            //    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, 2000);
+                
+            //    limparFormulario();
+            //    finalizarAguardar();
+                
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        //    finalizarAguardar();
+        });
+        
+        return false;
+    }}
+    // Listando empresas cadastradas 
+    function listar() {
+        fetch("/empresas/listar", {
+            method: "GET",
+        })
+        .then(function (resposta) {
+            resposta.json().then((empresas) => {
+                empresas.forEach((empresa) => {
+                    listaEmpresasCadastradas.push(empresa);
+                    
+                    console.log("listaEmpresasCadastradas")
+                    console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+                });
+            });
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    
 </script>
