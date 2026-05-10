@@ -1,13 +1,14 @@
 var usuarioModel = require("../models/usuarioModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
+    var login = req.body.loginServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+       if (login == undefined) {
+        res.status(400).send("Seu login está undefined!");
+    }
+    else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     } else {
 
         usuarioModel.autenticar(login, senha)
@@ -19,10 +20,8 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
                                     res.json({
+                                        id: resultadoAutenticar[0].id,
                                         login: resultadoAutenticar[0].login,
                                         senha: resultadoAutenticar[0].senha,
                                     });
@@ -30,13 +29,9 @@ function autenticar(req, res) {
                                     res.status(204).json({ aquarios: [] });
                                 }
                             })
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
+                 
+                
+            .catch(
                 function (erro) {
                     console.log(erro);
                     console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
@@ -52,20 +47,18 @@ function cadastrar(req, res) {
     var login = req.body.loginServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var confirmacaoSenha = req.body.confirmacaoSenhaServer;
 
     // Faça as validações dos valores
     if (login== undefined) {
         res.status(400).send("Seu login está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    }
+    else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } 
      else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(login, email, senha, confirmacaoSenha)
+        usuarioModel.cadastrar(login, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
