@@ -169,41 +169,27 @@
         </div> <br><br><br><br><br>
 
 
-        <div class="carrosselContainer">
+        <div id="carrosselAnimes" class="carrosselContainer">
 
             <button class="setaEsquerda" onclick="voltar()">❮</button>
 
             <div class="carrosselJanela">
                 <div class="carrossel" id="carrossel">
-                    <img onclick="mostrarSoloLeveling()" src="./assets/imgs/SoloLeveling.webp">
-                    <img onclick="mostrarOnePices()" src="./assets/imgs/OnePiece.webp">
-                    <img onclick="mostrarJujustsu()" src="./assets/imgs/JujutsuKaisen.jpg">
-                    <img onclick="mostrarDemonSlayer()" src="./assets/imgs/DemonSlayer.jpg">
-                    <img onclick="mostrarAttack()" src="./assets/imgs/AttackOnTitan.jpg">
-                    <img onclick="mostrarFrieren()" src="./assets/imgs/Frieren.webp">
-                    <img onclick="mostrarChainsaw()" src="./assets/imgs/ChainsawMan.jpg">
-                    <img onclick="mostrarNaruto()" src="./assets/imgs/Naruto.avif">
-                    <img onclick="mostrarMyHero()" src="./assets/imgs/MyHero.jpg">
-                    <img onclick="mostrarDan()" src="./assets/imgs/DandaDan.jpg">
+                    <img onclick="paginaAnime('soloLeveling')" src="./assets/imgs/SoloLeveling.webp">
+                    <img onclick="paginaAnime('onePiece')" src="./assets/imgs/OnePiece.webp">
+                    <img onclick="paginaAnime('jujutsu')" src="./assets/imgs/JujutsuKaisen.jpg">
+                    <img onclick="paginaAnime('demon')" src="./assets/imgs/DemonSlayer.jpg">
+                    <img onclick="paginaAnime('attack')" src="./assets/imgs/AttackOnTitan.jpg">
+                    <img onclick="paginaAnime('frieren')" src="./assets/imgs/Frieren.webp">
+                    <img onclick="paginaAnime('chainsaw')" src="./assets/imgs/ChainsawMan.jpg">
+                    <img onclick="paginaAnime('naruto')" src="./assets/imgs/Naruto.avif">
+                    <img onclick="paginaAnime('myHero')" src="./assets/imgs/MyHero.jpg">
+                    <img onclick="paginaAnime('danDaDan')" src="./assets/imgs/DandaDan.jpg">
                 </div>
             </div>
 
             <button class="setaDireita" onclick="proximo()">❯</button>
-
-        </div> <br><br><br><br><br>
-
-        <div class="infosObra" id="infosObra">
-            <div class="autor">
-                <img src="" alt="foto do autor">
-            </div>
-            <div class="textoObra">
-
-            </div>
-
         </div>
-
-
-
     </div>
     <footer>
         <div class="criadores">
@@ -232,54 +218,54 @@
 
 <script>
 
-let carrossel = document.getElementById("carrossel")
-let janela = document.querySelector(".carrosselJanela")
+    let carrossel = document.getElementById("carrossel")
+    let janela = document.querySelector(".carrosselJanela")
 
-let posicao = 0
-let larguraItem = 365
+    let posicao = 0
+    let larguraItem = 365
 
-function proximo(){
+    function proximo() {
 
-    let limite = carrossel.scrollWidth - janela.clientWidth 
+        let limite = carrossel.scrollWidth - janela.clientWidth
 
-    posicao += larguraItem
-
-    if(posicao > limite){
-        posicao = limite
-    }
-
-    carrossel.style.transform = `translateX(-${posicao}px)`
-}
-
-function voltar(){
-
-    posicao -= larguraItem
-
-    if(posicao < 0){
-        posicao = 0
-    }
-
-    carrossel.style.transform = `translateX(-${posicao}px)`
-}
-
-setInterval(() => {
-
-    let limite = carrossel.scrollWidth - janela.clientWidth - 365
-
-    if(posicao >= limite){
-        posicao = 0
-    } else {
         posicao += larguraItem
+
+        if (posicao > limite) {
+            posicao = limite
+        }
+
+        carrossel.style.transform = `translateX(-${posicao}px)`
     }
 
-    carrossel.style.transform = `translateX(-${posicao}px)`
+    function voltar() {
 
-}, 3000)
+        posicao -= larguraItem
 
-function mostrarSoloLeveling(){
+        if (posicao < 0) {
+            posicao = 0
+        }
 
-    
+        carrossel.style.transform = `translateX(-${posicao}px)`
+    }
 
-}
+    setInterval(() => {
+
+        let limite = carrossel.scrollWidth - janela.clientWidth - 365
+
+        if (posicao >= limite) {
+            posicao = 0
+        } else {
+            posicao += larguraItem
+        }
+
+        carrossel.style.transform = `translateX(-${posicao}px)`
+
+    }, 3000)
+
+    function paginaAnime(anime) {
+
+        window.location.href = `./infoAnimes.html?anime=${anime}`;
+
+    }
 
 </script>

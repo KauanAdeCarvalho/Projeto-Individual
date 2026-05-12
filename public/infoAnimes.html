@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/infoAnimes.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="divPrincipal">
+        <a href="./index.html" class="voltar">← Voltar</a>
+
+        <div id="banner" class="banner">
+
+            <div class="overlay"></div>
+
+
+            <div class="conteudoBanner">
+                <h1 id="titulo">Solo Leveling</h1>
+                <span id="infosBanner"></span>
+            </div>
+        </div>
+
+</body>
+
+</html>
+<script>
+
+    var parametro = new URLSearchParams(window.location.search);
+    var anime = parametro.get("anime");
+    var titulo = document.getElementById("titulo");
+    var banner = document.getElementById("banner");
+
+    if (anime == 'soloLeveling') {
+
+
+        titulo.className = 'tituloSolo'
+        titulo.innerHTML = 'Solo Leveling'
+        banner.style.backgroundImage = "url('./assets/imgs/banners/bannerSoloLeveling.png')";
+        infosBanner.innerHTML = 'Ação • Fantasia • 2024'
+
+    }
+
+    if (anime == 'onePiece') {
+
+    }
+
+    if (anime == 'jujutsu') {
+
+        titulo.className = 'tituloJujutsu'
+        titulo.innerHTML = 'Jujutsu Kaisen'
+        banner.style.backgroundImage = "url('./assets/imgs/banners/bannerJujutsu.png')";
+        infosBanner.innerHTML = 'Ação • Fantasia • 2024'
+
+    }
+
+    if (anime == 'demon') {
+
+        titulo.className = 'tituloDemon'
+        titulo.innerHTML = 'Demon Slayer'
+        banner.style.backgroundImage = "url('./assets/imgs/banners/bannerDemon.png')";
+        infosBanner.innerHTML = 'Ação • Fantasia • 2024'
+
+    }
+
+    if (anime == 'attack') {
+
+    }
+
+    if (anime == 'frieren') {
+
+    }
+
+    if (anime == 'chainsaw') {
+
+    }
+
+    if (anime == 'naruto') {
+
+    }
+
+    if (anime == 'myHero') {
+
+    }
+
+    if (anime == 'danDaDan') {
+
+    }
+
+</script>
