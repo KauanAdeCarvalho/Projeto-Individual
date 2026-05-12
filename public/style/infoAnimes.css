@@ -73,3 +73,33 @@
     color: orangered;
     font-weight: lighter;
 }
+
+
+
+
+
+.infosObra{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.infosAutor {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+}
+
+.imagemAutor {
+    display: flex;
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    border: 2px solid white;
+    margin-top: 40px;
+}
+
+.autorNome {
+    font-size: 20px;
+}

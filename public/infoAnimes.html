@@ -10,8 +10,8 @@
 
 <body>
 
-    <div class="divPrincipal">
-        <a href="./index.html" class="voltar">← Voltar</a>
+    <div class="divPrincipal"> 
+        <a id="btnVoltar" class="voltar">← Voltar</a>
 
         <div id="banner" class="banner">
 
@@ -23,16 +23,29 @@
                 <span id="infosBanner"></span>
             </div>
         </div>
+        <div class="infosObra">
+            <div class="infosAutor">
+                <img id="fotoAutor" class="imagemAutor" src="" alt="">
+                <span id="nomeAutor" class="autorNome"></span>
+            </div>
+
+        </div>
+        </div>
 
 </body>
 
 </html>
 <script>
 
-    var parametro = new URLSearchParams(window.location.search);
-    var anime = parametro.get("anime");
-    var titulo = document.getElementById("titulo");
-    var banner = document.getElementById("banner");
+    let parametro = new URLSearchParams(window.location.search);
+    var voltarPara = parametro.get("voltar");
+    var btnVoltar = document.getElementById("btnVoltar");
+    btnVoltar.href = `./index.html#${voltarPara}`;
+
+    let parametro2 = new URLSearchParams(window.location.search);
+    let anime = parametro2.get("anime");
+    let titulo = document.getElementById("titulo");
+    let banner = document.getElementById("banner");
 
     if (anime == 'soloLeveling') {
 
@@ -41,6 +54,8 @@
         titulo.innerHTML = 'Solo Leveling'
         banner.style.backgroundImage = "url('./assets/imgs/banners/bannerSoloLeveling.png')";
         infosBanner.innerHTML = 'Ação • Fantasia • 2024'
+        fotoAutor.src = "./assets/imgs/autores/autorSoloLeveling.jpeg";
+        nomeAutor.innerHTML = '<br> Autor(a): Chugong <br><br> Nascimento: 1984'
 
     }
 
