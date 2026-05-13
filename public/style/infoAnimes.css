@@ -6,7 +6,7 @@
 .divPrincipal {
     background-color: #111827;
     width: 100%;
-    height: 1080px;
+    height: 1680px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -57,49 +57,167 @@
 .tituloSolo {
     font-size: 90px;
     margin: 50px auto 0 auto;
-    color: purple;
+    color: #7e22ce;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(126, 34, 206, 0.7);
 }
 
 .tituloJujutsu {
     font-size: 90px;
     margin: 50px auto 0 auto;
-    color: white;
-    font-weight: lighter;
+    color: #f5f5f5;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 .tituloDemon {
     font-size: 90px;
     margin: 50px auto 0 auto;
-    color: orangered;
-    font-weight: lighter;
+    color: #ff4d4d;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 77, 77, 0.5);
 }
 
+.tituloOnePiece {
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    color: #60a5fa;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+}
 
+.tituloAttack {
+    font-size: 85px;
+    margin: 50px auto 0 auto;
+    color: #d1d5db;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
 
+.tituloFrieren {
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    color: #93c5fd;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(147, 197, 253, 0.5);
+}
 
+.tituloChainsaw {
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    color: #facc15;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px rgba(250, 204, 21, 0.5);
+}
 
-.infosObra{
+.tituloNaruto {
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    color: #fb923c;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(251, 146, 60, 0.5);
+}
+
+.tituloMyHero {
+    font-size: 85px;
+    margin: 50px auto 0 auto;
+    color: #facc15;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(250, 204, 21, 0.6);
+}
+
+.tituloDanDaDan {
+    font-size: 90px;
+    margin: 50px auto 0 auto;
+    color: #22d3ee;
+    font-weight: bold;
+    letter-spacing: 6px;
+    text-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+}
+
+.infosObra {
     display: flex;
     width: 100%;
     flex-direction: row;
 }
 
 .infosAutor {
+    margin: 50px 0 0 50px;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 28%;
     align-items: center;
+    background-color: black;
+    height: 1000px;
+    border: 1px solid white;
+    border-radius: 22px;
 }
 
 .imagemAutor {
     display: flex;
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-    border: 2px solid white;
-    margin-top: 40px;
+    width: 350px;
+    height: 350px;
+    border-radius: 175px;
+    border: 3.5px solid white;
+    margin-top: 70px;
+    object-fit: cover;
+}
+
+.tituloAutor {
+    margin: 0 auto 0 auto;
 }
 
 .autorNome {
+    font-size: 22px;
+}
+
+.outrasInformacoes {
     font-size: 20px;
+}
+
+.sinopse {
+    display: flex;
+    flex-direction: column;
+    font-size: 23px;
+    width: 63%;
+    height: 1000px;
+    margin: 50px 0 0 50px;
+}
+
+.sinopse H1 {
+    margin: 0 auto 0 auto;
+    font-size: 40px;
+}
+
+.infoProtagonista {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.infoProtagonista H2{
+    margin: 65px auto 0 auto;
+}
+
+.imgProtagonista {
+    width: 320px;
+    height: 320px;
+    border: 2px solid black;
+    margin: 55px auto 0 auto;
+    object-fit: cover;
+    border-radius: 80px;
+}
+
+.nomeProtagonista {
+    margin: 20px auto 0 auto;
+    font-size: 26px;
 }
