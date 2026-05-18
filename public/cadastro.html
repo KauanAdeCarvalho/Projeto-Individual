@@ -42,6 +42,13 @@
                 <button onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
+        <dialog class="cardErro" id="cardErro">
+            <h2>Alguma coisa deu errado, tente novamente!</h2>
+            <button onclick="fechar()" class="botaoErro">Fechar</button>
+        </dialog>
+        <dialog class="cardOk" id="cardOk">
+            <h2>Cadastro Realizado com sucesso!! Redirecionando para o login...</h2>
+        </dialog>
         <div class="containerImagem">
             <img class="imagemNice" src="./assets/imgs/nice.png" alt="">
         </div>
@@ -175,69 +182,77 @@
         let senhaVar = iptSenha.value;
         let confirmacaoSenhaVar = confirmarSenha.value;
 
-        
-        if(senhaVar == confirmacaoSenhaVar && loginVar.length > 3 && senhaVar.toUpperCase() != senhaVar && senhaVar.toLowerCase() != senhaVar
-    && /[0-9]/.test(senhaVar) && /[!@#$%&*_]/.test(senhaVar) && emailVar.includes("@") && emailVar.includes(".com") && senhaVar.length > 6) {
-    
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                loginServer: loginVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-            }),
-        })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
+
+        if (senhaVar == confirmacaoSenhaVar && loginVar.length > 3 && senhaVar.toUpperCase() != senhaVar && senhaVar.toLowerCase() != senhaVar
+            && /[0-9]/.test(senhaVar) && /[!@#$%&*_]/.test(senhaVar) && emailVar.includes("@") && emailVar.includes(".com") && senhaVar.length > 6) {
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    loginServer: loginVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                
+                if (resposta.ok) {
+                    
+                    cardOk.style.display = 'flex';
+                    //    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, 2500);
+                    
+                    
+                } else {
+                    cardErro.style.display = 'flex';
+                    
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                cardErro.style.display = 'flex';
+                
+                //    finalizarAguardar();
+            });
+        } else {
+                cardErro.style.display = 'flex';
+        }
             
-            if (resposta.ok) {
-                
-            //    cardErro.style.display = "block";
-                
-            //    mensagem_erro.innerHTML =
-            //    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-                
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, 2000);
-                
-            //    limparFormulario();
-            //    finalizarAguardar();
-                
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        //    finalizarAguardar();
-        });
-        
-        return false;
-    }}
+            return false;
+        }
     // Listando empresas cadastradas 
     function listar() {
         fetch("/empresas/listar", {
             method: "GET",
         })
-        .then(function (resposta) {
-            resposta.json().then((empresas) => {
-                empresas.forEach((empresa) => {
-                    listaEmpresasCadastradas.push(empresa);
-                    
-                    console.log("listaEmpresasCadastradas")
-                    console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+            .then(function (resposta) {
+                resposta.json().then((empresas) => {
+                    empresas.forEach((empresa) => {
+                        listaEmpresasCadastradas.push(empresa);
+
+                        console.log("listaEmpresasCadastradas")
+                        console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+                    });
                 });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
             });
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
     }
-    
+
+    function fechar() {
+
+        cardErro.style.display = 'none';
+
+    }
+
 </script>
