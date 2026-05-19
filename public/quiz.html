@@ -41,9 +41,23 @@
 
 <script>
 
-    function escolhaQuiz (valor) {
+    function escolhaQuiz (resposta) {
 
-        
+        let respostaQuiz = resposta;
+        let fkUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/quiz/responder", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    respostaServer: respostaQuiz,
+                    fkUsuarioServer: fkUsuario
+                }),
+            })
 
     }
 

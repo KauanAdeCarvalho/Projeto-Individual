@@ -1,48 +1,36 @@
-var medidaModel = require("../models/medidaModel");
+var quizModel = require("../models/quizModel");
 
-function buscarUltimasMedidas(req, res) {
+function responder(req, res) {
 
-    const limite_linhas = 7;
+    let resposta = req.body.respostaServer;
+    let fkUsuario = req.body.fkUsuarioServer;
 
-    var idAquario = req.params.idAquario;
+    if (resposta == undefined) {
+        res.status(400).send("Resposta está undefined!");
+    }
 
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+    else if (fkUsuario == undefined) {
+        res.status(400).send("fkUsuario está undefined!");
+    }
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
+    else {
 
+        quizModel.responder(resposta, fkUsuario)
+            .then(function(resultado) {
 
-function buscarMedidasEmTempoReal(req, res) {
+                res.status(200).send("Resposta salva com sucesso!");
 
-    var idAquario = req.params.idAquario;
+            }).catch(function(erro) {
 
-    console.log(`Recuperando medidas em tempo real`);
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+            });
+
+    }
+
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
-}
+    responder
+};
