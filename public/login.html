@@ -26,6 +26,13 @@
         <div class="containerImagem">
             <img class="imagemX" src="./assets/imgs/Xtobehero.webp" alt="">
         </div>
+        <dialog class="cardErro" id="cardErro">
+            <h2>Usuario e/ou senha incorretos</h2>
+            <button onclick="fechar()" class="botaoErro">Fechar</button>
+        </dialog>
+        <dialog class="cardOk" id="cardOk">
+            <h2>Login realizado com sucesso!! entrando...</h2>
+        </dialog>
         <div class="containerCaixa">
             <div class="caixa">
                 <h2>Login</h2> <br><br>
@@ -76,6 +83,7 @@
             // cardErro.style.display = "block"
             // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             // finalizarAguardar();
+            cardErro.style.display = 'flex';
             return false;
         }
         else {
@@ -107,6 +115,7 @@
                     sessionStorage.NOME_USUARIO = json.senha;
                     sessionStorage.ID_USUARIO = json.id;
 
+                    cardOk.style.display = 'flex';
                     setTimeout(function () {
                         window.location = "./dashboard.html";
                     }, 1000); // apenas para exibir o loading
@@ -114,24 +123,31 @@
                 });
 
             } else {
+                cardErro.style.display = 'flex';
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                //    finalizarAguardar(texto);
+                    //    finalizarAguardar(texto);
                 });
             }
 
         }).catch(function (erro) {
             console.log(erro);
+            cardErro.style.display = 'flex';
+
         })
 
         return false;
     }
 
-    function sumirMensagem() {
-    //    cardErro.style.display = "none"
+    function fechar() {
+
+        cardErro.style.display = 'none';
+
     }
+
+
 
 </script>

@@ -1,47 +1,36 @@
-var empresaModel = require("../models/empresaModel");
+var comentariosModel = require("../models/comentariosModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
+function responder(req, res) {
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
+    let comentario = req.body.comentarioServer;
+    let fkUsuario = req.body.fkUsuarioServer;
 
-function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
-
-function buscarPorId(req, res) {
-  var id = req.params.id;
-
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
-
-function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
-
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    if (resultado.length > 0) {
-      res
-        .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
-    } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
-        res.status(201).json(resultado);
-      });
+    if (comentario == undefined) {
+        res.status(400).send("Comentário está undefined!");
     }
-  });
+
+    else if (fkUsuario == undefined) {
+        res.status(400).send("fkUsuario está undefined!");
+    }
+
+    else {
+
+        comentariosModel.responder(comentario, fkUsuario)
+            .then(function(resultado) {
+
+                res.status(200).send("Resposta salva com sucesso!");
+
+            }).catch(function(erro) {
+
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+
+            });
+
+    }
+
 }
 
 module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
-  cadastrar,
-  listar,
+    responder
 };

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-        <div class="container">
+    <div class="container">
         <div class="header">
             <h1>ÁREA FUNCIONAL</h1> <br><br><br>
             <div class="areas">
@@ -24,12 +24,12 @@
         <div class="containerComentario">
             <div class="seuComentario">
                 <h2>Insira seu Comentário</h2>
-                <textarea name="" placeholder="Insira seu comentário" id=""></textarea>
+                <textarea name="" placeholder="Insira seu comentário" id="comentarioUsuario"></textarea>
+                <button class="botao" onclick="submeter()">OK</button>
             </div> <br><br><br><br><br><br>
             <div class="containerComentariosComunidade">
                 <h2>Todos Comentários</h2>
                 <div class="comentariosComunidade">
-                    
                 </div>
             </div>
         </div>
@@ -37,3 +37,27 @@
 </body>
 
 </html>
+<script>
+
+    function submeter() {
+
+        let comentario = comentarioUsuario.value;
+
+        let fkUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/comentarios/responder", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                comentarioServer: comentario,
+                fkUsuarioServer: fkUsuario
+            }),
+        })
+
+    }
+
+</script>
