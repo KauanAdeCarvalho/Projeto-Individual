@@ -47,9 +47,11 @@
 
 .comentariosComunidade {
     display: flex;
-    width: 80%;
+    width: 90%;
     height: 800px;
     background-color: black;
+    flex-direction: column;
+    color: white;
 }   
 
 
@@ -66,4 +68,20 @@
 
 .botao:hover {
     cursor: pointer;
+}
+
+.comentarioOk {
+    display: none;
+    color: green;
+}
+
+.comentarioUsuario {
+    width: 95%;
+    background-color: #9d5050;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin: 10px auto 0 auto;
+    font-size: 20px;
+    line-height: 1.2;
 }

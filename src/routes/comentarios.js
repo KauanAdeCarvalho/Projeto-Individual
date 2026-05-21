@@ -7,4 +7,9 @@ router.post("/responder", function (req, res) {
     comentariosController.responder(req, res);
 });
 
+router.get("/listar", function (req, res) {
+    comentariosController.listar(req, res);
+});
+
+
 module.exports = router;

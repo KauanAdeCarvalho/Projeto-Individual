@@ -31,6 +31,19 @@ function responder(req, res) {
 
 }
 
+function listar(req, res) {
+    comentariosModel.listar()
+        .then(resultado => {
+            res.status(200).json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
+
 module.exports = {
-    responder
+    responder,
+    listar
 };

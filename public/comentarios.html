@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="listarComentarios()">
     <div class="container">
         <div class="header">
             <h1>ÁREA FUNCIONAL</h1> <br><br><br>
@@ -23,13 +23,14 @@
         </div>
         <div class="containerComentario">
             <div class="seuComentario">
-                <h2>Insira seu Comentário</h2>
+                <h2>Insira seu Comentário</h2> 
                 <textarea name="" placeholder="Insira seu comentário" id="comentarioUsuario"></textarea>
                 <button class="botao" onclick="submeter()">OK</button>
-            </div> <br><br><br><br><br><br>
+                <span class="comentarioOk" id="comentarioOk">Comentário inserido com sucesso!!</span>
+            </div> <br><br><br><br>
             <div class="containerComentariosComunidade">
                 <h2>Todos Comentários</h2>
-                <div class="comentariosComunidade">
+                <div class="comentariosComunidade" id="comentariosComunidade">
                 </div>
             </div>
         </div>
@@ -45,19 +46,52 @@
 
         let fkUsuario = sessionStorage.ID_USUARIO;
 
-        fetch("/comentarios/responder", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                comentarioServer: comentario,
-                fkUsuarioServer: fkUsuario
-            }),
-        })
+        if (comentario.trim() == "") {
+            comentarioOk.style.display = 'none';
+            return;
+        } else {
+            fetch("/comentarios/responder", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    comentarioServer: comentario,
+                    fkUsuarioServer: fkUsuario
+                }),
+            })
+
+            comentarioOk.style.display = 'flex';
+
+
+            setTimeout(() => {
+                comentarioOk.style.display = 'none';
+            }, 2500);
+        }
 
     }
+
+        function listarComentarios() {
+            fetch("/comentarios/listar")
+                .then(res => res.json())
+                .then(dados => {
+
+                    console.log(dados);
+
+                    const div = document.getElementById("comentariosComunidade");
+                    comentariosComunidade.innerHTML = "";
+
+                    dados.forEach(item => {
+                        comentariosComunidade.innerHTML += `
+                        <div class="comentarioUsuario">
+                            <b>${item.login}:</b> <br> ${item.comentario} <br><br>
+                        </div>
+                    `;
+                    });
+                })
+                .catch(erro => console.log(erro));
+        }
 
 </script>
