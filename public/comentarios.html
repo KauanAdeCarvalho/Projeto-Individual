@@ -29,7 +29,7 @@
                 <span class="comentarioOk" id="comentarioOk">Comentário inserido com sucesso!!</span>
             </div> <br><br><br><br>
             <div class="containerComentariosComunidade">
-                <h2>Todos Comentários</h2>
+                <h2>Todos Comentários</h2> 
                 <div class="comentariosComunidade" id="comentariosComunidade">
                 </div>
             </div>
@@ -45,6 +45,7 @@
         let comentario = comentarioUsuario.value;
 
         let fkUsuario = sessionStorage.ID_USUARIO;
+        let usuario = sessionStorage.LOGIN_USUARIO;
 
         if (comentario.trim() == "") {
             comentarioOk.style.display = 'none';
@@ -63,6 +64,11 @@
                 }),
             })
 
+             comentariosComunidade.innerHTML += `
+                        <div class="comentarioUsuario">
+                            <b>${usuario}:</b> <br> ${comentario} <br><br>
+                        </div>`
+
             comentarioOk.style.display = 'flex';
 
 
@@ -70,6 +76,8 @@
                 comentarioOk.style.display = 'none';
             }, 2500);
         }
+
+       document.getElementById('comentarioUsuario').value = ""
 
     }
 

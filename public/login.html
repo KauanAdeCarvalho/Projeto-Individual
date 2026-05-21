@@ -111,8 +111,8 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.login;
-                    sessionStorage.NOME_USUARIO = json.senha;
+                    sessionStorage.LOGIN_USUARIO = json.login;
+                    sessionStorage.SENHA_USUARIO = json.senha;
                     sessionStorage.ID_USUARIO = json.id;
 
                     cardOk.style.display = 'flex';
