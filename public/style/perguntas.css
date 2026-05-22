@@ -73,8 +73,10 @@ button {
     color: var(--new-gray);
 }
 
+
 .container {
     height: 1050px;
+    width: 100%;
     background-color: #111827;
     display: flex;
     flex-direction: row;
@@ -83,7 +85,16 @@ button {
 
 .containerJogo {
     display: flex;
+    flex-direction: column;
+    width: 1400px;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+}
+
+.botaoIniciar{
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 20px;
+    border: 2px solid red;
 }
