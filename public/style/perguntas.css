@@ -72,3 +72,18 @@ button {
 .text-new-gray {
     color: var(--new-gray);
 }
+
+.container {
+    height: 1050px;
+    background-color: #111827;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.containerJogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -16,20 +16,21 @@
             <div class="areas">
                 <a href="./seuperfil.html">SEU PERFIL</a>
                 <a href="./dashboard.html">DASHBOARD</a>
-                <a href="./dashboard.html">QUIZ</a>
+                <a href="./quiz.html">ANIME FAVORITO</a>
+                <a href="./perguntas.html">QUIZ</a>
                 <a class="ativo" href="./comentarios.html">COMENTÁRIOS</a>
-                <a href="./index.html">SAIR </a>
+                <a href="./index.html">SAIR</a>
             </div>
         </div>
         <div class="containerComentario">
             <div class="seuComentario">
-                <h2>Insira seu Comentário</h2> 
+                <h2>Insira seu Comentário</h2>
                 <textarea name="" placeholder="Insira seu comentário" id="comentarioUsuario"></textarea>
                 <button class="botao" onclick="submeter()">OK</button>
                 <span class="comentarioOk" id="comentarioOk">Comentário inserido com sucesso!!</span>
             </div> <br><br><br><br>
             <div class="containerComentariosComunidade">
-                <h2>Todos Comentários</h2> 
+                <h2>Todos Comentários</h2>
                 <div class="comentariosComunidade" id="comentariosComunidade">
                 </div>
             </div>
@@ -64,7 +65,7 @@
                 }),
             })
 
-             comentariosComunidade.innerHTML += `
+            comentariosComunidade.innerHTML += `
                         <div class="comentarioUsuario">
                             <b>${usuario}:</b> <br> ${comentario} <br><br>
                         </div>`
@@ -77,29 +78,29 @@
             }, 2500);
         }
 
-       document.getElementById('comentarioUsuario').value = ""
+        document.getElementById('comentarioUsuario').value = ""
 
     }
 
-        function listarComentarios() {
-            fetch("/comentarios/listar")
-                .then(res => res.json())
-                .then(dados => {
+    function listarComentarios() {
+        fetch("/comentarios/listar")
+            .then(res => res.json())
+            .then(dados => {
 
-                    console.log(dados);
+                console.log(dados);
 
-                    const div = document.getElementById("comentariosComunidade");
-                    comentariosComunidade.innerHTML = "";
+                const div = document.getElementById("comentariosComunidade");
+                comentariosComunidade.innerHTML = "";
 
-                    dados.forEach(item => {
-                        comentariosComunidade.innerHTML += `
+                dados.forEach(item => {
+                    comentariosComunidade.innerHTML += `
                         <div class="comentarioUsuario">
                             <b>${item.login}:</b> <br> ${item.comentario} <br><br>
                         </div>
                     `;
-                    });
-                })
-                .catch(erro => console.log(erro));
-        }
+                });
+            })
+            .catch(erro => console.log(erro));
+    }
 
 </script>
