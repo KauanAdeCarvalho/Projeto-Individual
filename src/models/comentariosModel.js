@@ -4,7 +4,7 @@ function responder(comentario, fkUsuario) {
 
     let instrucaoSql = `
         INSERT INTO comentarios (comentario, fkUsuario)
-        VALUES ('${comentario}', ${fkUsuario});
+        VALUES ('${comentario}', '${fkUsuario}');
     `;
 
     console.log("Executando SQL:");

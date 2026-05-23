@@ -22,66 +22,67 @@
     </div>
 
     <body onload="onloadEsconder()">
-    <div>
-        <div id="pontuacaoEJogo" class="containerJogo">
-            <div id="caixaJogo" class="caixaJogo"></div>
-            <button id="btnIniciarQuiz" class="botaoIniciar" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+        <div>
+            <div id="pontuacaoEJogo" class="containerJogo">
+                <div id="caixaJogo" class="caixaJogo"></div>
+                <button id="btnIniciarQuiz" class="botaoIniciar" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-            <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                    <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                    <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
-                </div>
-                <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                    <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                        <span id="spanPontuacaoFinal">***</span>
-                    </span>
-                    <span id="msgFinal" class="width-fit-content">***</span>
-                </div>
-            </div>
-
-            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-                <div id="infoQuestao" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                        questões.</span>
+                <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+                    <div id="pontuacaoDuranteJogo" class="pontuacaoDurante">
+                        <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo" class="pontuacaoFinal">
+                        <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal" class="width-fit-content">***</span>
+                    </div>
                 </div>
 
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold"></span>
-                </div>
+                <div id="jogo" class="width-fit-content flex-colunar border-secondary">
 
-                <div id="infoAlternativas" class="padding-8">
-                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                </div>
+                    <div id="infoQuestao" class="infoQuestao">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span
+                                id="qtdQuestoes"></span>
+                            questões.</span>
+                    </div>
 
-                <div id="opcoes" class="flex-colunar padding-8">
-                    <span>
-                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                    </span>
-                </div>
+                    <div id="perguntaDaQuestaoAtual" class="perguntaAtual">
+                        <span id="spanQuestaoExibida" class="text-bold"></span>
+                    </div>
 
-                <div id="botoes" class="flex-colunar padding-8">
-                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                </div>
+                    <div id="infoAlternativas" class="facaEscolha">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
 
-            </div>
+                    <div id="opcoes" class="opcoesResposta">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+
+                    <div id="botoes" class="botoesQuiz">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
+
+                </div>
             </div>
         </div>
 </div>
@@ -110,86 +111,77 @@
             alternativaCorreta: "alternativaD"
         },
 
-        {
-            pergunta: "Qual o título do Sung Jin-Woo?",
-            alternativaA: "Rei dos Piratas",
-            alternativaB: "Monarca das Sombras",
-            alternativaC: "Punho de Aço",
-            alternativaD: "Feiticeiro mais Forte",
-            alternativaCorreta: "alternativaB"
-        },
+       // {
+    //        pergunta: "Qual o título do Sung Jin-Woo?",
+    //        alternativaA: "Rei dos Piratas",
+    //        alternativaB: "Monarca das Sombras",
+    //        alternativaC: "Punho de Aço",
+    //        alternativaD: "Feiticeiro mais Forte",
+    //        alternativaCorreta: "alternativaB"
+    //    },
 
-        {
-            pergunta: "Como é conhecido o Denji de Chainsa Man?",
-            alternativaA: "Demônio Moto Serra",
-            alternativaB: "Rei dos Piratas",
-            alternativaC: "Monarca das Sombras",
-            alternativaD: "Homem Moto Serra",
-            alternativaCorreta: "alternativaA"
-        },
+    //    {
+    //        pergunta: "Como é conhecido o Denji de Chainsa Man?",
+    //        alternativaA: "Demônio Moto Serra",
+    //        alternativaB: "Rei dos Piratas",
+    //        alternativaC: "Monarca das Sombras",
+    //        alternativaD: "Homem Moto Serra",
+    //        alternativaCorreta: "alternativaA"
+    //    },
 
-        {
-            pergunta: "O que Sung Jin-Woo ganha no início de Solo Leveling?",
-            alternativaA: "Uma espada lendária",
-            alternativaB: "Um sistema que permite evoluir",
-            alternativaC: "Um poder de fogo",
-            alternativaD: "Um companheiro mágico",
-            alternativaCorreta: "alternativaB"
-        },
+    //    {
+    //        pergunta: "O que Sung Jin-Woo ganha no início de Solo Leveling?",
+    //        alternativaA: "Uma espada lendária",
+    //        alternativaB: "Um sistema que permite evoluir",
+    //        alternativaC: "Um poder de fogo",
+    //        alternativaD: "Um companheiro mágico",
+    //        alternativaCorreta: "alternativaB"
+    //    },
 
-        {
-            pergunta: "Qual é o objetivo do Naruto?",
-            alternativaA: "Se tornar Hokage",
-            alternativaB: "Virar Rei dos Piratas",
-            alternativaC: "Ser o feiticeiro mais forte",
-            alternativaD: "Destruir os titãs",
-            alternativaCorreta: "alternativaA"
-        },
-
-        {
-            pergunta: "Contra quem a humanidade luta em Attack on Titan?",
-            alternativaA: "Demônios",
-            alternativaB: "Espíritos amaldiçoados",
-            alternativaC: "Titãs",
-            alternativaD: "Monstros mágicos",
-            alternativaCorreta: "alternativaC"
-        },
-
-        {
-            pergunta: "O que Tanjiro busca em Demon Slayer?",
-            alternativaA: "Ser o mais forte",
-            alternativaB: "Salvar sua irmã e torná-la humana",
-            alternativaC: "Virar Hokage",
-            alternativaD: "Dominar maldições",
-            alternativaCorreta: "alternativaB"
-        },
-
-        {
-            pergunta: "O que Yuji Itadori engole em Jujutsu Kaisen?",
-            alternativaA: "Uma pedra mágica",
-            alternativaB: "Um dedo amaldiçoado",
-            alternativaC: "Uma fruta do diabo",
-            alternativaD: "Um pergaminho antigo",
-            alternativaCorreta: "alternativaB"
-        },
-
-        {
-            pergunta: "O que Izuku Midoriya deseja se tornar em My Hero Academia?",
-            alternativaA: "Um vilão poderoso",
-            alternativaB: "O maior herói",
-            alternativaC: "Um caçador de demônios",
-            alternativaD: "Um rei",
-            alternativaCorreta: "alternativaB"
-        },
-
-        {
-            pergunta: "Quem é Frieren na história?",
-            alternativaA: "Uma guerreira humana",
-            alternativaB: "Uma elfa maga que vive muito tempo",
-            alternativaC: "Uma caçadora de demônios",
-            alternativaD: "Uma ninja lendária",
-            alternativaCorreta: "alternativaB"
-        }
+    //    {
+    //        pergunta: "Qual é o objetivo do Naruto?",
+    //        alternativaA: "Se tornar Hokage",
+    //        alternativaB: "Virar Rei dos Piratas",
+    //        alternativaC: "Ser o feiticeiro mais forte",
+    //        alternativaD: "Destruir os titãs",
+    //        alternativaCorreta: "alternativaA"
+    //    },
+//
+    //    {
+    //        pergunta: "O que Tanjiro busca em Demon Slayer?",
+    //        alternativaA: "Ser o mais forte",
+    //        alternativaB: "Salvar sua irmã e torná-la humana",
+    //        alternativaC: "Virar Hokage",
+    //        alternativaD: "Dominar maldições",
+    //        alternativaCorreta: "alternativaB"
+    //    },
+//
+    //    {
+    //        pergunta: "O que Yuji Itadori engole em Jujutsu Kaisen?",
+    //        alternativaA: "Uma pedra mágica",
+    //        alternativaB: "Um dedo amaldiçoado",
+    //        alternativaC: "Uma fruta do diabo",
+    //        alternativaD: "Um pergaminho antigo",
+    //        alternativaCorreta: "alternativaB"
+    //    },
+//
+    //    {
+    //        pergunta: "O que Izuku Midoriya deseja se tornar em My Hero Academia?",
+    //        alternativaA: "Um vilão poderoso",
+    //        alternativaB: "O maior herói",
+    //        alternativaC: "Um caçador de demônios",
+    //        alternativaD: "Um rei",
+    //        alternativaCorreta: "alternativaB"
+    //    },
+//
+    //    {
+    //        pergunta: "Quem é Frieren na história?",
+    //        alternativaA: "Uma guerreira humana",
+    //        alternativaB: "Uma elfa maga que vive muito tempo",
+    //        alternativaC: "Uma caçadora de demônios",
+    //        alternativaD: "Uma ninja lendária",
+    //        alternativaCorreta: "alternativaB"
+    //    }
 
     ]
 
@@ -348,15 +340,15 @@
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
         if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
+            textoParaMensagemFinal = "Está precisando assistir mais animes..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
         else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            textoParaMensagemFinal = "Da pra melhorar um pouco mais..."
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
         else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
+            textoParaMensagemFinal = "Você realmente entende sobre o assunto!!"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
@@ -374,5 +366,34 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+        enviarResultado();
+
+
+    }
+
+    function enviarResultado() {
+
+        let fkUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/perguntas/enviarResultado", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                acertosServer: certas,
+                errosServer: erradas,
+                fkUsuarioServer: fkUsuario
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log("Resultado enviado com sucesso");
+            })
+            .catch(err => {
+                console.error("Erro ao enviar:", err);
+            });
     }
 </script>

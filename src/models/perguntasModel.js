@@ -1,10 +1,10 @@
 var database = require("../database/config");
 
-function responder(resposta, fkUsuario) {
+function enviarResultado(acertos, erros, fkUsuario) {
 
     let instrucaoSql = `
-        INSERT INTO respostaQuiz (resposta, fkUsuario)
-        VALUES ('${resposta}', '${fkUsuario}');
+        INSERT INTO perguntasQuiz (acertos, erros, fkUsuario)
+        VALUES ('${acertos}', '${erros}', '${fkUsuario}');
     `;
 
     console.log("Executando SQL:");
@@ -14,5 +14,5 @@ function responder(resposta, fkUsuario) {
 }
 
 module.exports = {
-    responder
+    enviarResultado
 };

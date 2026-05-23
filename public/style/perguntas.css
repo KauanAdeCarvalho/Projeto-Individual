@@ -92,9 +92,75 @@ button {
     justify-content: center;
 }
 
-.botaoIniciar{
+.botaoIniciar {
     padding: 20px;
     font-size: 30px;
     border-radius: 20px;
     border: 2px solid red;
+}
+
+.pontuacaoDurante {
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.pontuacaoFinal {
+    padding: 10px;
+    color: white;
+}
+
+.infoQuestao {
+    padding: 8px;
+    font-size: 16px;
+    color: #aab3bf;
+}
+
+.perguntaAtual {
+    color: white;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.facaEscolha {
+    padding: 8px;
+    color: white;
+    font-size: 16px;
+    color: #cbd5f5;
+}
+
+.opcoesResposta {
+    display: flex;
+    background: #1f2f48;
+    padding: 10px;
+    color: white;
+    border-radius: 8px;
+    font-size: 19px;
+    transition: 0.25s;
+    border: 1px solid transparent;
+    flex-direction: column;
+}
+
+.botoesQuiz {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.botoesQuiz button {
+    height: 25px;
+    font-size: 18px;
+}
+
+#jogo {
+    background: #1f2f48;
+    padding: 25px;
+    border-radius: 15px;
+    width: 520px;
+    border: 2px solid #a428e7;
+    box-shadow: 20px 20px 22px rgba(217, 74, 227, 0.2);
 }
