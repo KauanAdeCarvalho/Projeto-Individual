@@ -1,6 +1,6 @@
 var comentariosModel = require("../models/comentariosModel");
 
-function responder(req, res) {
+function comentar(req, res) {
 
     let comentario = req.body.comentarioServer;
     let fkUsuario = req.body.fkUsuarioServer;
@@ -15,7 +15,7 @@ function responder(req, res) {
 
     else {
 
-        comentariosModel.responder(comentario, fkUsuario)
+        comentariosModel.comentar(comentario, fkUsuario)
             .then(function(resultado) {
 
                 res.status(200).send("Resposta salva com sucesso!");
@@ -44,6 +44,6 @@ function listar(req, res) {
 
 
 module.exports = {
-    responder,
+    comentar,
     listar
 };

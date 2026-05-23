@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function responder(comentario, fkUsuario) {
+function comentar(comentario, fkUsuario) {
 
     let instrucaoSql = `
         INSERT INTO comentarios (comentario, fkUsuario)
@@ -13,12 +13,6 @@ function responder(comentario, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
-module.exports = {
-    responder
-};
-
-
-
 function listar() {
     const instrucaoSql = `
         SELECT login, comentario 
@@ -29,6 +23,6 @@ function listar() {
 }
 
 module.exports = {
-    responder,
+    comentar,
     listar
 };

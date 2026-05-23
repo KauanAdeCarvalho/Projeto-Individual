@@ -30,7 +30,7 @@
                 <span class="comentarioOk" id="comentarioOk">Comentário inserido com sucesso!!</span>
             </div> <br><br><br><br>
             <div class="containerComentariosComunidade">
-                <h2>Todos Comentários</h2>
+                <h2>Comentários da Comunidade</h2>
                 <div class="comentariosComunidade" id="comentariosComunidade">
                 </div>
             </div>
@@ -52,7 +52,8 @@
             comentarioOk.style.display = 'none';
             return;
         } else {
-            fetch("/comentarios/responder", {
+
+            fetch("/comentarios/comentar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -83,7 +84,9 @@
     }
 
     function listarComentarios() {
-        fetch("/comentarios/listar")
+        fetch("/comentarios/listar", {
+            method: "GET"
+        })
             .then(res => res.json())
             .then(dados => {
 
