@@ -3,7 +3,7 @@ var database = require("../database/config");
 function enviarResultado(acertos, erros, fkUsuario) {
 
     let instrucaoSql = `
-        INSERT INTO perguntasQuiz (acertos, erros, fkUsuario)
+        INSERT INTO respostaQuiz (acertos, erros, fkUsuario)
         VALUES ('${acertos}', '${erros}', '${fkUsuario}');
     `;
 

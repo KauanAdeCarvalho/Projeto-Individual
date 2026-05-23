@@ -3,7 +3,7 @@ var database = require("../database/config");
 function responder(resposta, fkUsuario) {
 
     let instrucaoSql = `
-        INSERT INTO respostaQuiz (resposta, fkUsuario)
+        INSERT INTO respostaAnimeFavorito (resposta, fkUsuario)
         VALUES ('${resposta}', '${fkUsuario}');
     `;
 

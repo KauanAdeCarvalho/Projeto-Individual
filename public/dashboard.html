@@ -26,10 +26,23 @@
         </div>
         <div class="graficos">
             <div id="containerKpi" class="containerKpi">
-
+                <div class="kpi">
+                    <span id="tituloKpi1" class="tituloKpi">Anime mais votado</span>
+                    <span id="resultadoKpi1" class="resultadoKpi"></span>
+                </div>
+                <div class="kpi">
+                    <span id="tituloKpi2" class="tituloKpi">Total de votos</span>
+                    <span id="resultadoKpi2" class="resultadoKpi"></span>
+                </div>
+                <div class="kpi">
+                    <span id="tituloKpi3" class="tituloKpi">Tentativas no Quiz</span>
+                    <span id="resultadoKpi3" class="resultadoKpi">aedae</span>
+                </div>
             </div>
             <div class="g1">
                 <canvas id="graficoFavoritos">
+                </canvas>
+                <canvas id="graficoPorcentagem">
 
                 </canvas>
             </div>
@@ -42,7 +55,7 @@
 </html>
 <script>
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
 
@@ -52,6 +65,8 @@
 
         let votos = [];
         let animes = [];
+        let acertos = '';
+        let erros = '';
 
         fetch("/dashboard/buscarDadosAnimesFavoritos", {
             method: "GET"
@@ -113,6 +128,54 @@
                 });
             })
 
+        fetch('/dashboard/buscarPorcentagem', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(porcentagem => {
+
+                console.log(porcentagem);
+
+                acertos = porcentagem[0].porcentagemAcerto;
+                erros = porcentagem[0].porcentagemErro;
+                console.log(acertos);
+                console.log(erros);
+
+                const ctxPizza = document.getElementById('graficoPorcentagem');
+
+                const grafico = new Chart(ctxPizza, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Acertos', 'Erros'],
+                        datasets: [{
+                            data: [acertos, erros],
+                            backgroundColor: ['#22c55e', '#ef4444'],
+                            borderColor: 'white',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Porcentagem de Acertos e Erros',
+                                color: '#ffffff',
+                                font: {
+                                    size: 20,
+                                    weight: 'bold'
+                                }
+                            },
+                            legend: {
+                                labels: {
+                                    color: 'white'
+                                }
+                            }
+                        }
+                    }
+                });
+
+            });
 
     }
 

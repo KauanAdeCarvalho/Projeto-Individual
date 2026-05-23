@@ -12,7 +12,19 @@ function buscarDadosAnimesFavoritos(req, res) {
         });
 }
 
+function buscarPorcentagem(req, res) {
+    dashboardModel.buscarPorcentagem()
+        .then(resultado => {
+            res.status(200).json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
 
 module.exports = {
-    buscarDadosAnimesFavoritos
+    buscarDadosAnimesFavoritos,
+    buscarPorcentagem
 };

@@ -20,5 +20,33 @@
     height: 300px;
     display: flex;
     justify-content: flex-start;
-    background-color: red;
+    gap: 100px;
+    justify-content: center;
+}
+
+.kpi {
+    background: #425672;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #6366f1;
+    margin-top: 17px;
+}
+
+.tituloKpi {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.resultadoKpi {
+    font-size: 55px;
+    font-weight: bold;
+    color: #6366f1;
+    display: flex;
+    justify-self: center;
+    margin-top: 66px;
 }

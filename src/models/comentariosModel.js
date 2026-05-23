@@ -3,7 +3,7 @@ var database = require("../database/config");
 function comentar(comentario, fkUsuario) {
 
     let instrucaoSql = `
-        INSERT INTO comentarios (comentario, fkUsuario)
+        INSERT INTO comentario (comentario, fkUsuario)
         VALUES ('${comentario}', '${fkUsuario}');
     `;
 
@@ -17,7 +17,7 @@ function listar() {
     const instrucaoSql = `
         SELECT login, comentario 
         FROM usuario 
-        JOIN comentarios ON fkUsuario = usuario.id;
+        JOIN comentario ON fkUsuario = usuario.id;
     `;
     return database.executar(instrucaoSql);
 }
