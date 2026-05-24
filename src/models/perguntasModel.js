@@ -13,6 +13,18 @@ function enviarResultado(acertos, erros, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function verificarQuizResposta() {
+
+    let instrucaoSql = `
+        SELECT fkUsuario AS id 
+        FROM respostaQuiz;
+    `;
+
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
-    enviarResultado
+    enviarResultado,
+    verificarQuizResposta
 };

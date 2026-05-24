@@ -21,13 +21,13 @@
         </div>
     </div>
 
-    <body onload="onloadEsconder()">
-        <div>
+    <body onload="onloadEsconder(), verificarUsuario()">
+        <div id="divPai">
             <div id="pontuacaoEJogo" class="containerJogo">
                 <div id="caixaJogo" class="caixaJogo"></div>
                 <button id="btnIniciarQuiz" class="botaoIniciar" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-                <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+                <div id="pontuacao" class="caixaPontuacao">
                     <div id="pontuacaoDuranteJogo" class="pontuacaoDurante">
                         <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
                         <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
@@ -83,6 +83,7 @@
                     </div>
 
                 </div>
+                <img class="iconeLuffy" src="./assets/imgs/ícone/iconeLuffy.png" alt="">
             </div>
         </div>
 </div>
@@ -130,21 +131,12 @@
         },
 
         {
-            pergunta: "O que Sung Jin-Woo ganha no início de Solo Leveling?",
-            alternativaA: "Uma espada lendária",
-            alternativaB: "Um sistema que permite evoluir",
-            alternativaC: "Um poder de fogo",
-            alternativaD: "Um companheiro mágico",
+            pergunta: "Qual é o verdadeiro poder do Titã de Ataque em Attack on Titan?",
+            alternativaA: "Regeneração infinita",
+            alternativaB: "Capacidade de ver memórias de portadores futuros",
+            alternativaC: "Controle absoluto sobre outros titãs",
+            alternativaD: "Transformação ilimitada sem desgaste",
             alternativaCorreta: "alternativaB"
-        },
-
-        {
-            pergunta: "Qual é o objetivo do Naruto?",
-            alternativaA: "Se tornar Hokage",
-            alternativaB: "Virar Rei dos Piratas",
-            alternativaC: "Ser o feiticeiro mais forte",
-            alternativaD: "Destruir os titãs",
-            alternativaCorreta: "alternativaA"
         },
 
         {
@@ -166,12 +158,12 @@
         },
 
         {
-            pergunta: "O que Izuku Midoriya deseja se tornar em My Hero Academia?",
-            alternativaA: "Um vilão poderoso",
-            alternativaB: "O maior herói",
-            alternativaC: "Um caçador de demônios",
-            alternativaD: "Um rei",
-            alternativaCorreta: "alternativaB"
+            pergunta: "Qual é a habilidade especial da Expansão de Domínio do Gojo Satoru em Jujutsu Kaisen?",
+            alternativaA: "Aprisionar o inimigo em uma dimensão paralela",
+            alternativaB: "Cancelar qualquer técnica amaldiçoada",
+            alternativaC: "Sobrecarregar o cérebro do alvo com informação infinita",
+            alternativaD: "Refletir qualquer ataque automaticamente",
+            alternativaCorreta: "alternativaC"
         },
 
         {
@@ -180,6 +172,60 @@
             alternativaB: "Uma elfa maga que vive muito tempo",
             alternativaC: "Uma caçadora de demônios",
             alternativaD: "Uma ninja lendária",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Em Dan Da Dan, qual é a principal característica do poder do Okarun após ser possuído?",
+            alternativaA: "Controle de fogo espiritual",
+            alternativaB: "Velocidade extrema e força física anormal",
+            alternativaC: "Manipulação de ilusões",
+            alternativaD: "Controle de eletricidade",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Em My Hero Academia, qual é o nome do poder herdado por Midoriya?",
+            alternativaA: "All For One",
+            alternativaB: "One For All",
+            alternativaC: "Full Smash",
+            alternativaD: "Detroit Power",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Em Solo Leveling, o que diferencia Sung Jin-Woo dos outros caçadores?",
+            alternativaA: "Ele nasceu com poder máximo",
+            alternativaB: "Ele pode evoluir indefinidamente através do sistema",
+            alternativaC: "Ele possui duas classes ao mesmo tempo",
+            alternativaD: "Ele controla outros caçadores",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Em Demon Slayer, qual é o nome da técnica de respiração usada por Tanjiro inicialmente?",
+            alternativaA: "Respiração da Água",
+            alternativaB: "Respiração do Fogo",
+            alternativaC: "Respiração do Sol",
+            alternativaD: "Respiração do Vento",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Em Dan Da Dan, quem é a personagem que acredita em espíritos, mas não em alienígenas?",
+            alternativaA: "Momo Ayase",
+            alternativaB: "Aira Shiratori",
+            alternativaC: "Seiko Ayase",
+            alternativaD: "Turbo Granny",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Em My Hero Academia, qual é o verdadeiro nome do All Might?",
+            alternativaA: "Enji Todoroki",
+            alternativaB: "Toshinori Yagi",
+            alternativaC: "Hizashi Yamada",
+            alternativaD: "Mirio Togata",
             alternativaCorreta: "alternativaB"
         }
 
@@ -193,6 +239,33 @@
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function verificarUsuario() {
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/perguntas/verificarQuizResposta", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(ids => {
+
+                console.log(ids);
+
+                for (let i = 0; i < ids.length; i++) {
+
+                    if (idUsuario == ids[i].id) {
+
+                        btnIniciarQuiz.style.display = 'none';
+                        divPai.innerHTML = `<div id="cardFeito" class="cardFeito"> 
+                            <H1>Você já respondeu o nosso Quiz!</H1>
+                            </div>`
+                    }
+
+                }
+            })
+
+    }
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"

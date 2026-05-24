@@ -34,6 +34,18 @@ function enviarResultado(req, res) {
 
 }
 
+function verificarQuizResposta(req, res) {
+    perguntasModel.verificarQuizResposta()
+        .then(resultado => {
+            res.status(200).json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
 module.exports = {
-    enviarResultado
+    enviarResultado,
+    verificarQuizResposta
 };

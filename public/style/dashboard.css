@@ -45,7 +45,7 @@
 
 .kpi:hover{
     box-shadow: 20px 20px 22px rgba(217, 74, 227, 0.2);
-    transform: translateY(-8px);
+    transform: translateY(-6.5px);
 }
 
 .tituloKpi {

@@ -13,6 +13,18 @@ function responder(resposta, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function conferirAnimeFavorito() {
+
+    let instrucaoSql = `
+        SELECT fkUsuario AS id
+        FROM respostaAnimeFavorito;
+    `;
+
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
-    responder
+    responder,
+    conferirAnimeFavorito
 };

@@ -80,6 +80,7 @@ button {
     background-color: #111827;
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 
@@ -89,22 +90,37 @@ button {
     width: 1400px;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .botaoIniciar {
     padding: 20px;
     font-size: 30px;
     border-radius: 20px;
-    border: 2px solid red;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.caixaPontuacao {
+    display: flex;
+    width: 720px;
+    height: 80px;
+    margin-top: 25px;
+    border-radius: 40px;
+    font-size: 18px;
+    border: 2px solid white;
+    background: #1f2f48;
+    border: 2px solid #8b21c4;
+    align-items: center;
+    justify-content: center;
 }
 
 .pontuacaoDurante {
     padding: 10px;
     color: white;
     display: flex;
-    flex-direction: column;
-    width: 300px;
+    flex-direction: row;
+    gap: 100px;
 }
 
 .pontuacaoFinal {
@@ -140,14 +156,13 @@ button {
     color: white;
     border-radius: 8px;
     font-size: 19px;
-    transition: 0.25s;
-    border: 1px solid transparent;
     flex-direction: column;
 }
 
 .botoesQuiz {
     display: flex;
     flex-direction: column;
+    background-color: #497cc9;
     margin-top: 10px;
 }
 
@@ -161,6 +176,33 @@ button {
     padding: 25px;
     border-radius: 15px;
     width: 520px;
-    border: 2px solid #a428e7;
-    box-shadow: 20px 20px 22px rgba(217, 74, 227, 0.2);
+    border: 2px solid #8b21c4;
+    box-shadow: 20px 20px 33px rgba(217, 74, 227, 0.2);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.cardFeito {
+    display: flex;
+    height: 250px;
+    width: 600px;
+    border-radius: 20px;
+    background: #425672;
+    margin: auto;
+    margin-left: 450px;
+    margin-top: 350px;
+    border: 1.5px solid rgb(149, 58, 167);
+}
+
+.cardFeito H1 {
+    margin: auto;
+    font-size: 37px;
+    color: #d8d8d8;
+}
+
+.iconeLuffy {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 250px;
 }

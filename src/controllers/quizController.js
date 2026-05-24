@@ -31,6 +31,18 @@ function responder(req, res) {
 
 }
 
+function conferirAnimeFavorito(req, res) {
+    quizModel.conferirAnimeFavorito()
+        .then(resultado => {
+            res.status(200).json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
 module.exports = {
-    responder
+    responder,
+    conferirAnimeFavorito
 };

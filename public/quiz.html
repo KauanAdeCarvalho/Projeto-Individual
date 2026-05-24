@@ -9,30 +9,34 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="conferirResposta()">
     <div class="container">
-     <div class="header">
-        <h1>ÁREA FUNCIONAL</h1> <br><br><br>
-        <div class="areas">
-            <a href="./seuperfil.html">SEU PERFIL</a>
-            <a href="./dashboard.html">DASHBOARD</a>
-            <a class="ativo" href="./quiz.html">ANIME FAVORITO</a>
-            <a href="./perguntas.html">QUIZ</a>
-            <a href="./comentarios.html">COMENTÁRIOS</a>
-            <a href="./index.html">SAIR</a>
+        <div class="header">
+            <h1>ÁREA FUNCIONAL</h1> <br><br><br>
+            <div class="areas">
+                <a href="./seuperfil.html">SEU PERFIL</a>
+                <a href="./dashboard.html">DASHBOARD</a>
+                <a class="ativo" href="./quiz.html">ANIME FAVORITO</a>
+                <a href="./perguntas.html">QUIZ</a>
+                <a href="./comentarios.html">COMENTÁRIOS</a>
+                <a href="./index.html">SAIR</a>
+            </div>
         </div>
-    </div>
         <div class="animeFavorito">
+            <h1 id="respostaRespondido"></h1>
             <h2>Qual dos animes apresentados foi o seu foi o seu favorito?</h2>
             <div onclick="escolhaQuiz('Solo Leveling')" id="opcao1" class="opcao"> <span>1. Solo Leveling</span> </div>
             <div onclick="escolhaQuiz('One Piece')" id="opcao2" class="opcao"> <span>2. One Piece</span></div>
-            <div onclick="escolhaQuiz('Jujutsu Kasein')" id="opcao3" class="opcao"> <span>3. Jujutsu Kaisen</span> </div>
+            <div onclick="escolhaQuiz('Jujutsu Kasein')" id="opcao3" class="opcao"> <span>3. Jujutsu Kaisen</span>
+            </div>
             <div onclick="escolhaQuiz('Demon Slayer')" id="opcao4" class="opcao"> <span>4. Demon Slayer</span> </div>
-            <div onclick="escolhaQuiz('Attack on Titan')" id="opcao5" class="opcao"> <span>5. Attack on Titan</span> </div>
+            <div onclick="escolhaQuiz('Attack on Titan')" id="opcao5" class="opcao"> <span>5. Attack on Titan</span>
+            </div>
             <div onclick="escolhaQuiz('Frieren')" id="opcao6" class="opcao"> <span>6. Frieren</span></div>
             <div onclick="escolhaQuiz('Chainsaw Man')" id="opcao7" class="opcao"> <span>7. Chainsaw Man</span> </div>
             <div onclick="escolhaQuiz('Naruto')" id="opcao8" class="opcao"> <span>8. Naruto</span></div>
-            <div onclick="escolhaQuiz('My Hero Academy')" id="opcao9" class="opcao"> <span>9. My Hero Academy</span> </div>
+            <div onclick="escolhaQuiz('My Hero Academy')" id="opcao9" class="opcao"> <span>9. My Hero Academy</span>
+            </div>
             <div onclick="escolhaQuiz('Dan Da Dan')" id="opcao10" class="opcao"> <span>10. Dan Da Dan</span> </div>
         </div>
     </div>
@@ -42,23 +46,46 @@
 
 <script>
 
-    function escolhaQuiz (resposta) {
+    function conferirResposta() {
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch("/quiz/conferirAnimeFavorito", {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(ids => {
+
+                console.log(ids);
+
+                for (let i = 0; i < ids.length; i++) {
+
+                    if(idUsuario == ids[i].id) {
+                        respostaRespondido.innerHTML = `Você ja respondeu o quiz`;
+                    }
+
+                }
+
+            })
+    }
+
+    function escolhaQuiz(resposta) {
 
         let respostaQuiz = resposta;
         let fkUsuario = sessionStorage.ID_USUARIO;
 
         fetch("/quiz/responder", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    respostaServer: respostaQuiz,
-                    fkUsuarioServer: fkUsuario
-                }),
-            })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                respostaServer: respostaQuiz,
+                fkUsuarioServer: fkUsuario
+            }),
+        })
 
     }
 
