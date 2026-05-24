@@ -36,7 +36,7 @@
                 </div>
                 <div class="kpi">
                     <span id="tituloKpi3" class="tituloKpi">Tentativas no Quiz</span>
-                    <span id="resultadoKpi3" class="resultadoKpi">aedae</span>
+                    <span id="resultadoKpi3" class="resultadoKpi"></span>
                 </div>
             </div> <br><br><br>
             <div class="g1">
@@ -46,7 +46,7 @@
                     </canvas>
                 </div>
                 <div class="top10">
-                    <h1>TOP 10 PLAYERS NO QUIZ</h1>
+                    <h1>TOP 10 PLAYERS NO QUIZ</h1><br>
                     <div id="usuarioPodio" class="usuarioPodio">
                     </div>
                 </div>
@@ -125,13 +125,20 @@
                         scales: {
                             x: {
                                 ticks: {
-                                    color: 'white'
+                                    color: 'white',
+                                    font: {
+                                        size: 19
+                                    } 
                                 }
                             },
                             y: {
                                 beginAtZero: true,
                                 ticks: {
-                                    color: 'white'
+                                    color: 'white',
+                                    font: {
+                                        size: 20
+                                    }
+
                                 }
                             }
                         }
@@ -204,6 +211,44 @@
                     </div>`
                     contador++;
                 }
+            })
+
+
+        fetch('/dashboard/buscarQtdVotos', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(qtdVotos => {
+
+                console.log(qtdVotos[0]);
+
+                resultadoKpi2.innerHTML = `${qtdVotos[0].votos}`;
+
+            })
+
+
+        fetch('/dashboard/buscarTentativasQuiz', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(qtdTentativas => {
+
+                console.log(qtdTentativas[0]);
+
+                resultadoKpi3.innerHTML = `${qtdTentativas[0].tentativas}`;
+
+            })
+
+        fetch('/dashboard/buscarAnimeMaisVotado', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(animeMaisVotado => {
+
+                console.log(animeMaisVotado[0]);
+
+                resultadoKpi1.innerHTML = `${animeMaisVotado[0].nomeAnime}`;
+
             })
 
     }
