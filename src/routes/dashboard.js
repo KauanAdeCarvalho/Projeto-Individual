@@ -11,5 +11,9 @@ router.get("/buscarPorcentagem", function (req, res) {
     dashboardController.buscarPorcentagem(req, res);
 });
 
+router.get("/buscarPodio", function (req, res) {
+    dashboardController.buscarPodio(req, res);
+});
+
 
 module.exports = router;

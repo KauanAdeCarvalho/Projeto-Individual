@@ -38,12 +38,23 @@
                     <span id="tituloKpi3" class="tituloKpi">Tentativas no Quiz</span>
                     <span id="resultadoKpi3" class="resultadoKpi">aedae</span>
                 </div>
-            </div>
+            </div> <br><br><br>
             <div class="g1">
-                <canvas id="graficoFavoritos">
-                </canvas>
-                <canvas id="graficoPorcentagem">
 
+                <div class="graficoPorcentagem">
+                    <canvas id="graficoPorcentagem">
+                    </canvas>
+                </div>
+                <div class="top10">
+                    <h1>TOP 10 PLAYERS NO QUIZ</h1>
+                    <div id="usuarioPodio" class="usuarioPodio">
+                    </div>
+                </div>
+
+
+            </div> <br><br><br><br><br>
+            <div class="graficoFavoritos">
+                <canvas id="graficoFavoritos">
                 </canvas>
             </div>
         </div>
@@ -176,6 +187,24 @@
                 });
 
             });
+
+        fetch('/dashboard/buscarPodio', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(podio => {
+
+                console.log(podio);
+                usuarioPodio.innerHTML = '';
+                let contador = 1;
+
+                for (let i = 0; i < podio.length; i++) {
+                    usuarioPodio.innerHTML += `<div class="usuarios">
+                    ${contador}º - <b>${podio[i].login}</b> acertos: ${podio[i].acertos}        
+                    </div>`
+                    contador++;
+                }
+            })
 
     }
 

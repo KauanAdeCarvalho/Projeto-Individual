@@ -19,7 +19,19 @@ function buscarPorcentagem() {
     return database.executar(instrucaoSql);
 }
 
+function buscarPodio() {
+    const instrucaoSql = `
+    SELECT login, acertos FROM usuario u
+    JOIN respostaQuiz r ON u.id = r.fkUsuario
+    ORDER BY acertoS DESC LIMIT 10; 
+    `;
+
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
     buscarDadosAnimesFavoritos,
-    buscarPorcentagem
+    buscarPorcentagem,
+    buscarPodio
 };

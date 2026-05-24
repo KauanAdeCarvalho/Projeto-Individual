@@ -23,8 +23,19 @@ function buscarPorcentagem(req, res) {
         });
 }
 
+function buscarPodio(req, res) {
+    dashboardModel.buscarPodio()
+        .then(resultado => {
+            res.status(200).json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
 
 module.exports = {
     buscarDadosAnimesFavoritos,
-    buscarPorcentagem
+    buscarPorcentagem,
+    buscarPodio
 };

@@ -92,16 +92,14 @@
 
                 console.log(dados);
 
-                const div = document.getElementById("comentariosComunidade");
                 comentariosComunidade.innerHTML = "";
 
-                dados.forEach(item => {
+                for(let i = 0; i < dados.length; i++){
                     comentariosComunidade.innerHTML += `
                         <div class="comentarioUsuario">
-                            <b>${item.login}:</b> <br> ${item.comentario} <br><br>
-                        </div>
-                    `;
-                });
+                            <b>${dados[i].login}:</b> <br> ${dados[i].comentario} <br><br>
+                        </div>`
+                }   
             })
             .catch(erro => console.log(erro));
     }
