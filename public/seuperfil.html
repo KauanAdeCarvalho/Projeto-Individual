@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="informacoesUsuario()">
     <div class="container">
         <div class="header">
             <h1>ÁREA FUNCIONAL</h1> <br><br><br>
@@ -22,11 +22,99 @@
                 <a href="./index.html">SAIR</a>
             </div>
         </div>
-    </div>
-    </div>
+        <div class="containerPerfil">
+            <h2 id="nome" class="nomeUsuario"></h2>
+
+            <div class="cardsPerfil">
+
+                <div class="card">
+                    <span>Acertos no Quiz</span>
+                    <h1 id="acertosUsuario">0</h1>
+                </div>
+
+                <div class="card">
+                    <span>Comentários</span>
+                    <h1 id="comentariosUsuario">0</h1>
+                </div>
+
+                <div class="card">
+                    <span>Anime Favorito</span>
+                    <h1 id="animeFavoritoUsuario">-</h1>
+                </div>
+
+            </div>
+
+        </div>
+
 </body>
 
 </html>
 <script>
+
+    let nomeUsuario = sessionStorage.LOGIN_USUARIO;
+    let idUsuario = sessionStorage.ID_USUARIO;
+
+    function informacoesUsuario() {
+
+        nome.innerHTML = nomeUsuario;
+
+        fetch('/seuperfil/buscarAcertosQuiz', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(acertosQuiz => {
+
+                console.log(acertosQuiz);
+
+                for (let i = 0; i < acertosQuiz.length; i++) {
+
+                    if (acertosQuiz[i].id == idUsuario) {
+
+                        acertosUsuario.innerHTML = `${acertosQuiz[i].acertos}`
+                    }
+                }
+
+            })
+
+        fetch('/seuperfil/buscarQtdComentarios', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(comentarios => {
+
+                console.log(comentarios);
+
+                let contadorComentarios = 0;
+
+                for (let i = 0; i < comentarios.length; i++) {
+
+                    if (comentarios[i].id == idUsuario) {
+
+                        contadorComentarios++;
+                        comentariosUsuario.innerHTML = `${contadorComentarios}`
+                    }
+                }
+
+            })
+
+
+        fetch('/seuperfil/buscarAnimeFavorito', {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(animeFavorito => {
+
+                console.log(animeFavorito);
+
+                for (let i = 0; i < animeFavorito.length; i++) {
+
+                    if (animeFavorito[i].id == idUsuario) {
+
+                        animeFavoritoUsuario.innerHTML = `${animeFavorito[i].resposta}`
+                    }
+                }
+
+            })
+    }
 
 </script>

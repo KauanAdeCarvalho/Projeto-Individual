@@ -22,8 +22,10 @@
                 <a href="./index.html">SAIR</a>
             </div>
         </div>
+        <div class="cardAviso">
+            <h1>Você já escolheu um anime favorito!</h1>
+        </div>
         <div class="animeFavorito">
-            <h1 id="respostaRespondido"></h1>
             <h2>Qual dos animes apresentados foi o seu foi o seu favorito?</h2>
             <div onclick="escolhaQuiz('Solo Leveling')" id="opcao1" class="opcao"> <span>1. Solo Leveling</span> </div>
             <div onclick="escolhaQuiz('One Piece')" id="opcao2" class="opcao"> <span>2. One Piece</span></div>
@@ -60,8 +62,14 @@
 
                 for (let i = 0; i < ids.length; i++) {
 
-                    if(idUsuario == ids[i].id) {
-                        respostaRespondido.innerHTML = `Você ja respondeu o quiz`;
+                    if (idUsuario == ids[i].id) {
+                        
+                        let divAnimes = document.querySelector(".animeFavorito");
+                        divAnimes.style.display = 'none';
+
+                        let divAviso = document.querySelector(".cardAviso");
+                        divAviso.style.display = 'flex';
+
                     }
 
                 }
@@ -74,6 +82,7 @@
         let respostaQuiz = resposta;
         let fkUsuario = sessionStorage.ID_USUARIO;
 
+        
         fetch("/quiz/responder", {
             method: "POST",
             headers: {
@@ -86,7 +95,8 @@
                 fkUsuarioServer: fkUsuario
             }),
         })
-
+        alert(`Você escolheu o anime ${resposta} como seu favorito!`)
+        location.reload();
     }
 
 </script>
