@@ -126,7 +126,7 @@
                                     color: 'white',
                                     font: {
                                         size: 19
-                                    } 
+                                    }
                                 }
                             },
                             y: {
@@ -204,11 +204,18 @@
                 let contador = 1;
 
                 for (let i = 0; i < podio.length; i++) {
+
+                    if (contador == 1) {
+                        usuarioPodio.innerHTML += `<div class="usuarios">
+                    ${contador}º - <b>${podio[i].login} </b> acertos: ${podio[i].acertos} 👑        
+                    </div>`
+                        contador++;
+                    } else {
                     usuarioPodio.innerHTML += `<div class="usuarios">
                     ${contador}º - <b>${podio[i].login}</b> acertos: ${podio[i].acertos}        
                     </div>`
                     contador++;
-                }
+                }}
             })
 
 
