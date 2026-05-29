@@ -419,7 +419,7 @@
         // verifica se resposta assinalada é correta
         options.forEach((option) => {
             if (option.checked === true && option.value === respostaQuestaoAtual) {
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                document.getElementById(alternativaCorreta)
                 pontuacaoFinal++
                 certas++
                 document.getElementById("spanCertas").innerHTML = certas
@@ -427,8 +427,8 @@
             } else if (option.checked && option.value !== respostaQuestaoAtual) {
                 const wrongLabelId = option.labels[0].id
 
-                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                document.getElementById(wrongLabelId)
+                document.getElementById(alternativaCorreta)
                 tentativaIncorreta++
                 erradas++
                 document.getElementById("spanErradas").innerHTML = erradas
@@ -505,6 +505,7 @@
                 errosServer: erradas,
                 fkUsuarioServer: fkUsuario
             })
+            
         })
             .then(res => res.json())
             .then(data => {
