@@ -222,7 +222,7 @@
 
     function proximo() {
 
-        let limite = carrossel.scrollWidth - janela.clientWidth // scroll width (carrossel) pega meu tamanho total (10 cards)
+        let limite = 10*365 - 5*365 // scroll width (carrossel) pega meu tamanho total (10 cards)
                                                                 // clientWidth (janela) pega meus itens visiveis
         posicao += larguraItem                                  
 
@@ -246,7 +246,7 @@
 
     setInterval(() => {
 
-        let limite = carrossel.scrollWidth - janela.clientWidth - 365
+        let limite = 10*365 - 5*365
 
         if (posicao >= limite) {
             posicao = 0
