@@ -214,24 +214,24 @@
 
 <script>
 
-    let carrossel = document.getElementById("carrossel")
-    let janela = document.querySelector(".carrosselJanela")
+    let carrossel = document.getElementById("carrossel") // pegando o carrossel todo
+    let janela = document.querySelector(".carrosselJanela") // pegando diretamente a classe da parte visivel do carrossel
 
     let posicao = 0
     let larguraItem = 365
 
     function proximo() {
 
-        let limite = carrossel.scrollWidth - janela.clientWidth
-
-        posicao += larguraItem
+        let limite = carrossel.scrollWidth - janela.clientWidth // scroll width (carrossel) pega meu tamanho total (10 cards)
+                                                                // clientWidth (janela) pega meus itens visiveis
+        posicao += larguraItem                                  
 
         if (posicao > limite) {
             posicao = limite
         }
 
-        carrossel.style.transform = `translateX(-${posicao}px)`
-    }
+        carrossel.style.transform = `translateX(-${posicao}px)` // sempre que anda pra esquerda ou ele fica mais pra esquerda
+    }                                                           // ou menos pra esquerda
 
     function voltar() {
 
@@ -260,8 +260,8 @@
 
     function paginaAnime(anime) {
 
-        window.location.href = `./infoAnimes.html?anime=${anime}&voltar=carrosselAnimes`;
-
+        window.location.href = `./infoAnimes.html?anime=${anime}&voltar=carrosselAnimes`; // ? inicio dos parametros
+                                                                                          // & separador
     }
 
 </script>

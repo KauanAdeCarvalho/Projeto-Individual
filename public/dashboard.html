@@ -143,6 +143,8 @@
                     }
                 });
             })
+            .catch(erro => console.log(erro));
+
 
         fetch('/dashboard/buscarPorcentagem', {
             method: "GET"
@@ -191,7 +193,9 @@
                     }
                 });
 
-            });
+            })
+            .catch(erro => console.log(erro));
+            
 
         fetch('/dashboard/buscarPodio', {
             method: "GET"
@@ -217,6 +221,8 @@
                     contador++;
                 }}
             })
+            .catch(erro => console.log(erro));
+
 
 
         fetch('/dashboard/buscarQtdVotos', {
@@ -230,6 +236,8 @@
                 resultadoKpi2.innerHTML = `${qtdVotos[0].votos}`;
 
             })
+            .catch(erro => console.log(erro));
+
 
 
         fetch('/dashboard/buscarTentativasQuiz', {
@@ -243,6 +251,7 @@
                 resultadoKpi3.innerHTML = `${qtdTentativas[0].tentativas}`;
 
             })
+            .catch(erro => console.log(erro));
 
         fetch('/dashboard/buscarAnimeMaisVotado', {
             method: "GET"
@@ -255,6 +264,8 @@
                 resultadoKpi1.innerHTML = `${animeMaisVotado[0].nomeAnime}`;
 
             })
+            .catch(erro => console.log(erro));
+
 
     }
 

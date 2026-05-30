@@ -51,7 +51,7 @@
     let parametro = new URLSearchParams(window.location.search);
     let voltarPara = parametro.get("voltar");
     let btnVoltar = document.getElementById("btnVoltar");
-    btnVoltar.href = `./index.html#${voltarPara}`;
+    btnVoltar.href = `./index.html#${voltarPara}`; // # "âncora" id da pagina que vou
 
     let parametro2 = new URLSearchParams(window.location.search);
     let anime = parametro2.get("anime");
