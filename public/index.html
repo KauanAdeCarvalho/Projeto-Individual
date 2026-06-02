@@ -214,16 +214,14 @@
 
 <script>
 
-    let carrossel = document.getElementById("carrossel") // pegando o carrossel todo
-    let janela = document.querySelector(".carrosselJanela") // pegando diretamente a classe da parte visivel do carrossel
 
     let posicao = 0
     let larguraItem = 365
 
     function proximo() {
 
-        let limite = 10*365 - 5*365 // scroll width (carrossel) pega meu tamanho total (10 cards)
-                                                                // clientWidth (janela) pega meus itens visiveis
+        let limite = 10*365 - 5*365 
+                                                                
         posicao += larguraItem                                  
 
         if (posicao > limite) {
